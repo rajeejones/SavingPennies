@@ -27,7 +27,7 @@ class GameViewController: UIViewController {
     }
     
     // Mark: Outlets
-    @IBOutlet weak var shuffleButton: UIButton!
+
     @IBOutlet weak var dueMessageLabel: UILabel!
     @IBOutlet weak var remainingMovesLabel: UILabel!
     @IBOutlet weak var bankAmountLabel: UILabel!
@@ -36,7 +36,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var overlayImage: UIImageView!
     
     @IBOutlet weak var menuButton: UIButton!
-
+    @IBOutlet weak var shuffleButton: UIButton!
+    
     // Mark: View Overrides
     override var prefersStatusBarHidden: Bool {
         get {
@@ -230,15 +231,11 @@ class GameViewController: UIViewController {
     
     // Mark: Actions
     @IBAction func shuffleButtonPressed(_ sender: UIButton) {
-        if movesLeft <= 0 {
-            beginGame()
-        } else {
-            shuffle()
-            decrementMoves()
-        }
+        shuffle()
+        decrementMoves()
     }
     
-    
+
     
 }
 

@@ -40,6 +40,10 @@
 		69CAE9FC1DDEAB7900B10561 /* Montserrat-Hairline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69CAE9F71DDEAB7900B10561 /* Montserrat-Hairline.otf */; };
 		69CAE9FD1DDEAB7900B10561 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69CAE9F81DDEAB7900B10561 /* Montserrat-Light.otf */; };
 		69CAE9FE1DDEAB7900B10561 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69CAE9F91DDEAB7900B10561 /* Montserrat-Regular.otf */; };
+		EAD66B841E5905B800A313D5 /* TabPopupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */; };
+		EAD66B851E5905B800A313D5 /* TabPopupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */; };
+		EAD66B881E5918A300A313D5 /* TabPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */; };
+		EAD66B891E5918A300A313D5 /* TabPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD66B871E5918A300A313D5 /* TabPopupViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +84,10 @@
 		69CAE9F91DDEAB7900B10561 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		82FB79029F22D3594E70BAFE /* Pods-Saving Pennies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saving Pennies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saving Pennies/Pods-Saving Pennies.debug.xcconfig"; sourceTree = "<group>"; };
 		BB84FAAD5065F6B3BE8D2433 /* Pods_Saving_Pennies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Saving_Pennies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPopupTableViewCell.swift; sourceTree = "<group>"; };
+		EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabPopupTableViewCell.xib; sourceTree = "<group>"; };
+		EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPopupViewController.swift; sourceTree = "<group>"; };
+		EAD66B871E5918A300A313D5 /* TabPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabPopupViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +178,10 @@
 				69391C361D48711D006E27D6 /* Sprites.atlas */,
 				695FF56B1D41C41900D46A16 /* LaunchScreen.storyboard */,
 				695FF56E1D41C41900D46A16 /* Info.plist */,
+				EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */,
+				EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */,
+				EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */,
+				EAD66B871E5918A300A313D5 /* TabPopupViewController.xib */,
 			);
 			path = "Saving Pennies";
 			sourceTree = "<group>";
@@ -269,6 +281,7 @@
 				695FF56D1D41C41900D46A16 /* LaunchScreen.storyboard in Resources */,
 				69CAE9FA1DDEAB7900B10561 /* Montserrat-Black.otf in Resources */,
 				69385E8A1D68D3EC002448B7 /* Drip.wav in Resources */,
+				EAD66B851E5905B800A313D5 /* TabPopupTableViewCell.xib in Resources */,
 				69385E7B1D68B4D0002448B7 /* Level_4.json in Resources */,
 				69385E8B1D68D3EC002448B7 /* Error.wav in Resources */,
 				69CAE9FE1DDEAB7900B10561 /* Montserrat-Regular.otf in Resources */,
@@ -285,6 +298,7 @@
 				69CAE9FD1DDEAB7900B10561 /* Montserrat-Light.otf in Resources */,
 				69CAE9FC1DDEAB7900B10561 /* Montserrat-Hairline.otf in Resources */,
 				69385E921D691415002448B7 /* Whoosh.wav in Resources */,
+				EAD66B891E5918A300A313D5 /* TabPopupViewController.xib in Resources */,
 				695FF5681D41C41900D46A16 /* Main.storyboard in Resources */,
 				69CAE9FB1DDEAB7900B10561 /* Montserrat-Bold.otf in Resources */,
 			);
@@ -349,9 +363,11 @@
 				698916261DE2BB16001A410B /* CharacterSelectionViewController.swift in Sources */,
 				695FF5631D41C41900D46A16 /* GameScene.swift in Sources */,
 				695FF5651D41C41900D46A16 /* GameViewController.swift in Sources */,
+				EAD66B841E5905B800A313D5 /* TabPopupTableViewCell.swift in Sources */,
 				69385E7F1D68B6F3002448B7 /* Extensions.swift in Sources */,
 				69385E7D1D68B65A002448B7 /* Tile.swift in Sources */,
 				69385E901D68D8DD002448B7 /* Chain.swift in Sources */,
+				EAD66B881E5918A300A313D5 /* TabPopupViewController.swift in Sources */,
 				69391C351D485D13006E27D6 /* Coin.swift in Sources */,
 				695FF55F1D41C41900D46A16 /* AppDelegate.swift in Sources */,
 				69391C391D487210006E27D6 /* Array2D.swift in Sources */,
@@ -477,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = LNQ86AM2R8;
 				INFOPLIST_FILE = "Saving Pennies/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rajeejones.Saving-Pennies";
@@ -491,6 +508,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = LNQ86AM2R8;
 				INFOPLIST_FILE = "Saving Pennies/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rajeejones.Saving-Pennies";

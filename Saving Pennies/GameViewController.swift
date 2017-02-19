@@ -38,6 +38,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
     
+    @IBOutlet weak var expensesButton: UIButton!
     // Mark: View Overrides
     override var prefersStatusBarHidden: Bool {
         get {
@@ -234,6 +235,12 @@ class GameViewController: UIViewController {
         shuffle()
         decrementMoves()
     }
+    
+    @IBAction func expensesButtonPressed(_ sender: Any) {
+        self.present(TabPopupViewController(), animated: true, completion: nil)
+    }
+    
+    
     
 
     

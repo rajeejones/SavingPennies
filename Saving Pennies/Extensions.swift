@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Dictionary {
     static func loadJSONFromBundle(_ filename: String) -> Dictionary <String, AnyObject>? {
@@ -34,3 +35,5 @@ extension Dictionary {
         return dictionaryOK
     }
 }
+
+

@@ -125,6 +125,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="58"/>
                                         <color key="backgroundColor" red="0.91764705882352937" green="0.28627450980392155" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="expensesButtonImage"/>
+                                        <connections>
+                                            <action selector="expensesButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="LAn-mv-Jev"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQa-k4-aBY">
                                         <rect key="frame" x="125" y="0.0" width="125" height="58"/>
@@ -186,6 +189,7 @@
                     <connections>
                         <outlet property="bankAmountLabel" destination="6HD-7D-FBR" id="4qe-Fj-97a"/>
                         <outlet property="dueMessageLabel" destination="nsg-IF-Vk6" id="dcN-Qo-QSE"/>
+                        <outlet property="expensesButton" destination="wxW-0f-CMA" id="2iG-qP-xKD"/>
                         <outlet property="gameContainerView" destination="H2i-ga-Gwu" id="Gaf-QC-xI1"/>
                         <outlet property="gameSkView" destination="hbI-Qt-2Lg" id="g3b-8s-sB5"/>
                         <outlet property="menuButton" destination="pqf-KO-ALh" id="EpQ-5t-i3A"/>
@@ -196,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="90"/>
+            <point key="canvasLocation" x="165.59999999999999" y="89.505247376311857"/>
         </scene>
         <!--Character Selection View Controller-->
         <scene sceneID="3LR-wR-a7S">

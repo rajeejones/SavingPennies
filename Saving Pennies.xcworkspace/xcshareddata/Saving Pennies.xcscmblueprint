@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "99D4045BED813A79DD85B8F83B490D9B09A31562",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B6527910E19DA9C4BAB26631F5F0B4F5A5B30ECE" : 9223372036854775807,
+    "99D4045BED813A79DD85B8F83B490D9B09A31562" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C6BD04C1-99E5-4E7C-95E4-8194A6B766AF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B6527910E19DA9C4BAB26631F5F0B4F5A5B30ECE" : "",
+    "99D4045BED813A79DD85B8F83B490D9B09A31562" : "Saving%20Pennies\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Saving Pennies",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Saving Pennies.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rajeejones\/SavingPennies.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "99D4045BED813A79DD85B8F83B490D9B09A31562"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/rajeejonesfreelance\/saving-pennies.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B6527910E19DA9C4BAB26631F5F0B4F5A5B30ECE"
+    }
+  ]
+}

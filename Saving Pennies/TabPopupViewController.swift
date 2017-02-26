@@ -9,10 +9,15 @@
 import UIKit
 
 protocol TabPopupCloseDelegate: class {
-    func closeButtonPressed()
+    func closeButtonPressed(completionHandler: CompletionHandler)
 }
 
-class TabPopupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol BillPaymentDelegate: class {
+    func payBill(forAmount: Int)
+    func advanceLevel()
+}
+
+class TabPopupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PayButtonDelegate {
 
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var mainView: UIView!
@@ -24,6 +29,7 @@ class TabPopupViewController: UIViewController, UITableViewDelegate, UITableView
     
     var tempData = ["Mortgate/Rent", "School Loan", "Car Payment", "Credit Card"]
     weak var tabPopupCloseDelegate:TabPopupCloseDelegate?
+    weak var billPaymentDelegate:BillPaymentDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +62,43 @@ class TabPopupViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TabPopupTableViewCell
         
         cell.itemLabel.text = tempData[indexPath.row]
-        
+        cell.payButtonDelegate = self
+        cell.paymentAmount = 100
         
         return cell
     }
 
     
     @IBAction func closeButtonPressed(_ sender: Any) {
-        tabPopupCloseDelegate?.closeButtonPressed()
+        tabPopupCloseDelegate?.closeButtonPressed(completionHandler: nil)
+    }
+    
+    func payButtonPressed(amount: Int) {
+        billPaymentDelegate?.payBill(forAmount: amount)
+    }
+    
+    func itemPaid() {
+        var advanceLevel = true
+        let sections = mainTableView.numberOfSections
+        for section in 0..<sections {
+            let rowCount = mainTableView.numberOfRows(inSection: section)
+            
+            for row in 0..<rowCount {
+                let cell = mainTableView.cellForRow(at: IndexPath(row: row, section: section)) as! TabPopupTableViewCell
+                if cell.paid {
+                    advanceLevel = true
+                } else {
+                    advanceLevel = false
+                }
+                
+            }
+        }
+        
+        if advanceLevel {
+            //todo: Reset expenses
+            billPaymentDelegate?.advanceLevel()
+        }
+        
     }
     
     /*

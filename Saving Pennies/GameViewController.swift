@@ -9,14 +9,15 @@
 import UIKit
 import SpriteKit
 
+var gameScore = 0
+typealias CompletionHandler = ((_ success:Bool) -> Void)?
 
-class GameViewController: UIViewController, TabPopupCloseDelegate {
+class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDelegate {
     
     // Mark: Variables
     var scene: GameScene!
     var level: Level!
     var movesLeft = 0
-    var score = 0
     var currentLevelNum = 0
     
     // Mark: Constants
@@ -68,13 +69,11 @@ class GameViewController: UIViewController, TabPopupCloseDelegate {
         
         expensesContainerView.alpha = 0
         shadowView.alpha = 0
+        overlayImage.isHidden = true;
         setupLevel(levelNum: currentLevelNum)
-        
-
     }
     
     func setupLevel(levelNum: Int) {
-        overlayImage.isHidden = true;
         
         //        self.view = gameSkView
         // Configure the view.
@@ -104,7 +103,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate {
     func beginGame() {
         scene.animateBeginGame() { }
         movesLeft = level.maximumMoves
-        score = 0
+        gameScore = 0
         updateLabels()
         level.resetComboMultiplier()
         shuffle()
@@ -178,7 +177,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate {
         scene.animateMatchedCoins(chains) {
             
             for chain in chains {
-                self.score += chain.score
+                gameScore += chain.score
             }
             self.updateLabels()
             
@@ -210,19 +209,14 @@ class GameViewController: UIViewController, TabPopupCloseDelegate {
     
     func updateLabels() {
         remainingMovesLabel.text = String(format: "%ld", movesLeft) + " moves"
-        bankAmountLabel.text = formatter.string(from: NSNumber(value: score))
+        bankAmountLabel.text = formatter.string(from: NSNumber(value: gameScore))
         
     }
     
     func decrementMoves() {
         
-        if score >= level.targetScore {
-            showOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)
-            self.currentLevelNum = self.currentLevelNum < NumLevels ? self.currentLevelNum + 1 : 0
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                
-                self.hideOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)
-            }
+        if gameScore >= level.targetScore {
+            goToNextLevel()
         }
         else if movesLeft <= 1 {
             showOverlay(overlayType: GameViewController.OverlayImageState.GameOver)
@@ -234,6 +228,15 @@ class GameViewController: UIViewController, TabPopupCloseDelegate {
         
         movesLeft -= 1
         updateLabels()
+        }
+    }
+    
+    func goToNextLevel() {
+        showOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)
+        self.currentLevelNum = self.currentLevelNum < NumLevels ? self.currentLevelNum + 1 : 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            
+            self.hideOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)
         }
     }
     
@@ -262,7 +265,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate {
     }
     
     
-    func closeButtonPressed() {
+    func closeButtonPressed(completionHandler: CompletionHandler) {
         
         expensesContainerTopConstraint.constant = expensesContainerTopConstraint.constant - self.view.bounds.height
         
@@ -275,7 +278,29 @@ class GameViewController: UIViewController, TabPopupCloseDelegate {
                         self.expensesContainerView.alpha = 0
                         self.expensesContainerTopConstraint.constant = self.expensesContainerTopConstraint.constant + self.view.bounds.height
         },
-                       completion: nil)
+                       completion: { finished in
+                        completionHandler?(finished)
+        })
+    }
+    
+    func payBill(forAmount: Int) {
+        if (forAmount <= gameScore) {
+            gameScore = gameScore - forAmount
+            self.updateLabels()
+        } else {
+            let alert = UIAlertController(title: "Insufficient Funds", message: "You currently dont have enough money in the bank to pay this right now.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func advanceLevel() {
+        closeButtonPressed { (finished) in
+            if finished {
+                self.goToNextLevel()
+            }
+        }
+        
     }
     
     
@@ -283,6 +308,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate {
         if (segue.identifier == "tabPopupSegue") {
             let childViewController = segue.destination as! TabPopupViewController
             childViewController.tabPopupCloseDelegate = self
+            childViewController.billPaymentDelegate = self
         }
     }
     

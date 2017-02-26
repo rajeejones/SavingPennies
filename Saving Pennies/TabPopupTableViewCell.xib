@@ -41,20 +41,34 @@
                                 <real key="value" value="2"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="payButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bLN-bi-oEz"/>
+                        </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="Haf-N9-DBi">
+                        <rect key="frame" x="234" y="6" width="41" height="32"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="A1F-g4-dzt" secondAttribute="trailing" constant="16" id="ACw-jJ-Zbu"/>
                     <constraint firstItem="A1F-g4-dzt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Hhq-yt-aNL"/>
+                    <constraint firstItem="Haf-N9-DBi" firstAttribute="top" secondItem="A1F-g4-dzt" secondAttribute="top" id="PEz-hp-5d5"/>
                     <constraint firstItem="Y48-xL-XHB" firstAttribute="centerY" secondItem="A1F-g4-dzt" secondAttribute="centerY" id="PLu-io-uIf"/>
                     <constraint firstItem="Y48-xL-XHB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="Wg5-bG-QxS"/>
                     <constraint firstItem="A1F-g4-dzt" firstAttribute="leading" secondItem="Y48-xL-XHB" secondAttribute="trailing" constant="11" id="X5g-BJ-ZQa"/>
+                    <constraint firstItem="Haf-N9-DBi" firstAttribute="centerX" secondItem="A1F-g4-dzt" secondAttribute="centerX" id="l7V-f9-NMK"/>
+                    <constraint firstItem="Haf-N9-DBi" firstAttribute="leading" secondItem="Y48-xL-XHB" secondAttribute="trailing" constant="32" id="lCK-G2-8JE"/>
+                    <constraint firstItem="Haf-N9-DBi" firstAttribute="centerY" secondItem="Y48-xL-XHB" secondAttribute="centerY" id="vIl-rg-a3N"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="itemLabel" destination="Y48-xL-XHB" id="EJQ-aE-Ooe"/>
+                <outlet property="paidCheckmarkImage" destination="Haf-N9-DBi" id="Jdo-Wa-OaO"/>
                 <outlet property="payBtn" destination="A1F-g4-dzt" id="qQb-l4-Evx"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="checkmark" width="22" height="22"/>
+    </resources>
 </document>

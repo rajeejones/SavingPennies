@@ -10,6 +10,8 @@ import UIKit
 
 class CharacterSelectionViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var playButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 

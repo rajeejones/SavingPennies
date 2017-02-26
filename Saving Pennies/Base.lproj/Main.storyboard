@@ -249,7 +249,7 @@
                                     <segue destination="BV1-FR-VrT" kind="show" id="3mP-er-Npr"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tz9-He-aFP">
+                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tz9-He-aFP">
                                 <rect key="frame" x="0.0" y="132" width="375" height="307"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Joe Card" translatesAutoresizingMaskIntoConstraints="NO" id="ckB-g9-FSt">

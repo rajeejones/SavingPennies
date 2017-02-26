@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, TabPopupCloseDelegate {
     
     // Mark: Variables
     var scene: GameScene!
@@ -28,6 +28,9 @@ class GameViewController: UIViewController {
     
     // Mark: Outlets
 
+    @IBOutlet weak var expensesContainerTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var expensesContainerView: UIView!
     @IBOutlet weak var dueMessageLabel: UILabel!
     @IBOutlet weak var remainingMovesLabel: UILabel!
     @IBOutlet weak var bankAmountLabel: UILabel!
@@ -62,7 +65,11 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        expensesContainerView.alpha = 0
+        shadowView.alpha = 0
         setupLevel(levelNum: currentLevelNum)
+        
 
     }
     
@@ -237,12 +244,47 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func expensesButtonPressed(_ sender: Any) {
-        self.present(TabPopupViewController(), animated: true, completion: nil)
+        
+        expensesContainerTopConstraint.constant = expensesContainerTopConstraint.constant + self.view.bounds.height
+        
+        UIView.animate(withDuration: 0.6,
+                       delay: 0, usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0,
+                       options: [],
+                       animations: {
+                        self.shadowView.alpha = 1
+                        self.expensesContainerView.alpha = 1
+                        self.expensesContainerTopConstraint.constant = self.expensesContainerTopConstraint.constant - self.view.bounds.height
+        },
+                       completion: nil)
+        
+        
     }
     
     
+    func closeButtonPressed() {
+        
+        expensesContainerTopConstraint.constant = expensesContainerTopConstraint.constant - self.view.bounds.height
+        
+        UIView.animate(withDuration: 0.6,
+                       delay: 0, usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0,
+                       options: [],
+                       animations: {
+                        self.shadowView.alpha = 0
+                        self.expensesContainerView.alpha = 0
+                        self.expensesContainerTopConstraint.constant = self.expensesContainerTopConstraint.constant + self.view.bounds.height
+        },
+                       completion: nil)
+    }
     
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "tabPopupSegue") {
+            let childViewController = segue.destination as! TabPopupViewController
+            childViewController.tabPopupCloseDelegate = self
+        }
+    }
     
 }
 

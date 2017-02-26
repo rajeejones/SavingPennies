@@ -43,7 +43,8 @@
 		EAD66B841E5905B800A313D5 /* TabPopupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */; };
 		EAD66B851E5905B800A313D5 /* TabPopupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */; };
 		EAD66B881E5918A300A313D5 /* TabPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */; };
-		EAD66B891E5918A300A313D5 /* TabPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD66B871E5918A300A313D5 /* TabPopupViewController.xib */; };
+		EAD66B8B1E62B24100A313D5 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */; };
+		EAD66B8D1E62B25B00A313D5 /* PopupContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +88,8 @@
 		EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPopupTableViewCell.swift; sourceTree = "<group>"; };
 		EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabPopupTableViewCell.xib; sourceTree = "<group>"; };
 		EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPopupViewController.swift; sourceTree = "<group>"; };
-		EAD66B871E5918A300A313D5 /* TabPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabPopupViewController.xib; sourceTree = "<group>"; };
+		EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
+		EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,8 @@
 				69385E7E1D68B6F3002448B7 /* Extensions.swift */,
 				69385E801D68BC74002448B7 /* Swap.swift */,
 				69385E8F1D68D8DD002448B7 /* Chain.swift */,
+				EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */,
+				EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */,
 				69385E821D68D3EC002448B7 /* Sounds */,
 				69385E711D68B4D0002448B7 /* Levels */,
 				695FF5661D41C41900D46A16 /* Main.storyboard */,
@@ -181,7 +185,6 @@
 				EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */,
 				EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */,
 				EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */,
-				EAD66B871E5918A300A313D5 /* TabPopupViewController.xib */,
 			);
 			path = "Saving Pennies";
 			sourceTree = "<group>";
@@ -298,7 +301,6 @@
 				69CAE9FD1DDEAB7900B10561 /* Montserrat-Light.otf in Resources */,
 				69CAE9FC1DDEAB7900B10561 /* Montserrat-Hairline.otf in Resources */,
 				69385E921D691415002448B7 /* Whoosh.wav in Resources */,
-				EAD66B891E5918A300A313D5 /* TabPopupViewController.xib in Resources */,
 				695FF5681D41C41900D46A16 /* Main.storyboard in Resources */,
 				69CAE9FB1DDEAB7900B10561 /* Montserrat-Bold.otf in Resources */,
 			);
@@ -364,6 +366,7 @@
 				695FF5631D41C41900D46A16 /* GameScene.swift in Sources */,
 				695FF5651D41C41900D46A16 /* GameViewController.swift in Sources */,
 				EAD66B841E5905B800A313D5 /* TabPopupTableViewCell.swift in Sources */,
+				EAD66B8B1E62B24100A313D5 /* AnimationClass.swift in Sources */,
 				69385E7F1D68B6F3002448B7 /* Extensions.swift in Sources */,
 				69385E7D1D68B65A002448B7 /* Tile.swift in Sources */,
 				69385E901D68D8DD002448B7 /* Chain.swift in Sources */,
@@ -371,6 +374,7 @@
 				69391C351D485D13006E27D6 /* Coin.swift in Sources */,
 				695FF55F1D41C41900D46A16 /* AppDelegate.swift in Sources */,
 				69391C391D487210006E27D6 /* Array2D.swift in Sources */,
+				EAD66B8D1E62B25B00A313D5 /* PopupContainer.swift in Sources */,
 				69385E811D68BC74002448B7 /* Swap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

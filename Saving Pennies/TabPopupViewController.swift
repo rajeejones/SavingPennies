@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol TabPopupCloseDelegate: class {
+    func closeButtonPressed()
+}
+
 class TabPopupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var learnMoreBtn: UIButton!
     @IBOutlet weak var mainHeader: UIView!
@@ -18,7 +23,7 @@ class TabPopupViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var mainTableView: UITableView!
     
     var tempData = ["Mortgate/Rent", "School Loan", "Car Payment", "Credit Card"]
-    
+    weak var tabPopupCloseDelegate:TabPopupCloseDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +61,11 @@ class TabPopupViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
 
+    
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        tabPopupCloseDelegate?.closeButtonPressed()
+    }
+    
     /*
     // MARK: - Navigation
 

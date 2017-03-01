@@ -22,9 +22,9 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     
     // Mark: Variables
     var scene: GameScene!
-    
+    var logicController:LogicController!
     var movesLeft = 0
-    
+    var tabPopupVC: TabPopupViewController!
     
     // Mark: Constants
 
@@ -47,8 +47,8 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
-    
     @IBOutlet weak var expensesButton: UIButton!
+    
     // Mark: View Overrides
     override var prefersStatusBarHidden: Bool {
         get {
@@ -72,16 +72,19 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        formatter.numberStyle = .currency
+        formatter.locale = NSLocale.current
         
         expensesContainerView.alpha = 0
         shadowView.alpha = 0
+        
         overlayImage.isHidden = true;
+        
         setupLevel(levelNum: currentLevelNum)
     }
     
     func setupLevel(levelNum: Int) {
         
-        //        self.view = gameSkView
         // Configure the view.
         let skView = gameSkView as SKView
         skView.isMultipleTouchEnabled = false
@@ -92,33 +95,32 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
         scene.scaleMode = .aspectFill
         
         level = Level(filename: "Level_\(levelNum)")
-        scene.level = level
+        logicController = LogicController(withLevel: level)
+        scene.logicController = logicController
         scene.swipeHandler = handleSwipe
+        
         
         // Present the scene.
         skView.presentScene(scene)
         
-        formatter.numberStyle = .currency
-        formatter.locale = NSLocale.current
-        
-        
+
         beginGame()
     }
     
-    // Mark: Functions
+
     func beginGame() {
         scene.animateBeginGame() { }
         movesLeft = level.maximumMoves
         gameScore = 0
         updateLabels()
-        level.resetComboMultiplier()
+        logicController.resetComboMultiplier()
         shuffle()
     }
     
     func shuffle() {
         
         scene.removeAllCoinSprites()
-        let newCoins = level.shuffle()
+        let newCoins = logicController.shuffle()
         scene.addSpritesForCoins(newCoins)
     }
     
@@ -161,8 +163,8 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     func handleSwipe(_ swap: Swap) {
         view.isUserInteractionEnabled = false
         
-        if level.isPossibleSwap(swap) {
-            level.performSwap(swap)
+        if logicController.isPossibleSwap(swap) {
+            logicController.performSwap(swap)
             scene.animateSwap(swap, completion: handleMatches)
             
         } else {
@@ -173,7 +175,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     }
     
     func handleMatches() {
-        let chains = level.removeMatches()
+        let chains = logicController.removeMatches()
         
         if chains.count == 0 {
             beginNextTurn()
@@ -187,9 +189,9 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
             }
             self.updateLabels()
             
-            let columns = level.fillHoles()
+            let columns = self.logicController.fillHoles()
             self.scene.animateFallingCoins(columns) {
-                let columns = level.topUpCoins()
+                let columns = self.logicController.topUpCoins()
                 self.scene.animateNewCoins(columns) {
                     self.handleMatches()
                 }
@@ -198,8 +200,8 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     }
     
     func beginNextTurn() {
-        level.resetComboMultiplier()
-        level.detectPossibleSwaps()
+        logicController.resetComboMultiplier()
+        logicController.detectPossibleSwaps()
         
         if level.possibleSwaps.count < 1 {
             showOverlay(overlayType: OverlayImageState.Shuffling)
@@ -221,10 +223,13 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     
     func decrementMoves() {
         
-        if gameScore >= level.targetScore {
-            goToNextLevel()
-        }
-        else if movesLeft <= 1 {
+        
+        
+//        if gameScore >= level.targetScore {
+//            goToNextLevel()
+//        }
+//        else
+        if movesLeft <= 1 {
             showOverlay(overlayType: GameViewController.OverlayImageState.GameOver)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 
@@ -270,7 +275,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
         
     }
     
-    
+    // Delegate Functions
     func closeButtonPressed(completionHandler: CompletionHandler) {
         
         expensesContainerTopConstraint.constant = expensesContainerTopConstraint.constant - self.view.bounds.height
@@ -312,9 +317,9 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "tabPopupSegue") {
-            let childViewController = segue.destination as! TabPopupViewController
-            childViewController.tabPopupCloseDelegate = self
-            childViewController.billPaymentDelegate = self
+            tabPopupVC = segue.destination as! TabPopupViewController
+            tabPopupVC.tabPopupCloseDelegate = self
+            tabPopupVC.billPaymentDelegate = self
         }
     }
     

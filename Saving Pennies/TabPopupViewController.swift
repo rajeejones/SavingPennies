@@ -78,7 +78,7 @@ class TabPopupViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func itemPaid() {
-        var advanceLevel = true
+        var advanceLevel = false
         let sections = mainTableView.numberOfSections
         for section in 0..<sections {
             let rowCount = mainTableView.numberOfRows(inSection: section)
@@ -89,6 +89,7 @@ class TabPopupViewController: UIViewController, UITableViewDelegate, UITableView
                     advanceLevel = true
                 } else {
                     advanceLevel = false
+                    break
                 }
                 
             }

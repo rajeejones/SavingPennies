@@ -45,6 +45,7 @@
 		EAD66B881E5918A300A313D5 /* TabPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */; };
 		EAD66B8B1E62B24100A313D5 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */; };
 		EAD66B8D1E62B25B00A313D5 /* PopupContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */; };
+		EAEA74B81E66811200AD1AA7 /* LogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA74B71E66811200AD1AA7 /* LogicController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPopupViewController.swift; sourceTree = "<group>"; };
 		EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
 		EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupContainer.swift; sourceTree = "<group>"; };
+		EAEA74B71E66811200AD1AA7 /* LogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogicController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,9 +208,10 @@
 		EAEA74B31E667EAC00AD1AA7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EAEA74B41E667ECE00AD1AA7 /* View Controllers */,
 				EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */,
 				EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */,
-				EAEA74B41E667ECE00AD1AA7 /* View Controllers */,
+				EAEA74B71E66811200AD1AA7 /* LogicController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAEA74B81E66811200AD1AA7 /* LogicController.swift in Sources */,
 				69391C3B1D4872AA006E27D6 /* Level.swift in Sources */,
 				698916261DE2BB16001A410B /* CharacterSelectionViewController.swift in Sources */,
 				695FF5631D41C41900D46A16 /* GameScene.swift in Sources */,

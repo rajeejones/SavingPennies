@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var level: Level!
+    var logicController: LogicController!
     var swipeHandler: ((Swap) -> ())?
     var selectionSprite = SKSpriteNode()
     
@@ -116,7 +116,7 @@ class GameScene: SKScene {
         let (success, column, row) = convertPoint(location)
         if success {
             // 3
-            if let coin = level.coinAtColumn(column, row: row) {
+            if let coin = logicController.coinAtColumn(column, row: row) {
                 // 4
                 swipeFromColumn = column
                 swipeFromRow = row
@@ -180,8 +180,8 @@ class GameScene: SKScene {
         guard toColumn >= 0 && toColumn < NumColumns else { return }
         guard toRow >= 0 && toRow < NumRows else { return }
         // 3
-        if let toCoin = level.coinAtColumn(toColumn, row: toRow),
-            let fromCoin = level.coinAtColumn(swipeFromColumn!, row: swipeFromRow!) {
+        if let toCoin = logicController.coinAtColumn(toColumn, row: toRow),
+            let fromCoin = logicController.coinAtColumn(swipeFromColumn!, row: swipeFromRow!) {
             // 4
             if let handler = swipeHandler {
                 let swap = Swap(coinA: fromCoin, coinB: toCoin)

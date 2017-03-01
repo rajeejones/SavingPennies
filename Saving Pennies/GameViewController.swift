@@ -18,13 +18,12 @@ let formatter = NumberFormatter()
 
 typealias CompletionHandler = ((_ success:Bool) -> Void)?
 
-class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDelegate {
+class GameViewController: UIViewController, BillPaymentDelegate {
     
     // Mark: Variables
     var scene: GameScene!
     var logicController:LogicController!
     var movesLeft = 0
-    var tabPopupVC: TabPopupViewController!
     
     // Mark: Constants
 
@@ -35,9 +34,6 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     
     // Mark: Outlets
 
-    @IBOutlet weak var expensesContainerTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var shadowView: UIView!
-    @IBOutlet weak var expensesContainerView: UIView!
     @IBOutlet weak var dueMessageLabel: UILabel!
     @IBOutlet weak var remainingMovesLabel: UILabel!
     @IBOutlet weak var bankAmountLabel: UILabel!
@@ -74,10 +70,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
         
         formatter.numberStyle = .currency
         formatter.locale = NSLocale.current
-        
-        expensesContainerView.alpha = 0
-        shadowView.alpha = 0
-        
+                
         overlayImage.isHidden = true;
         
         setupLevel(levelNum: currentLevelNum)
@@ -258,42 +251,13 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     }
     
     @IBAction func expensesButtonPressed(_ sender: Any) {
-        
-        expensesContainerTopConstraint.constant = expensesContainerTopConstraint.constant + self.view.bounds.height
-        
-        UIView.animate(withDuration: 0.6,
-                       delay: 0, usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 0,
-                       options: [],
-                       animations: {
-                        self.shadowView.alpha = 1
-                        self.expensesContainerView.alpha = 1
-                        self.expensesContainerTopConstraint.constant = self.expensesContainerTopConstraint.constant - self.view.bounds.height
-        },
-                       completion: nil)
-        
+        let xibView = Bundle.main.loadNibNamed("PopupView", owner: nil, options: nil)?[0] as! PopupView
+        xibView.popupType = PopupViewType.expenses
+        xibView.billPaymentDelegate = self
+        PopupContainer.generatePopupWithView(xibView).show()
         
     }
-    
-    // Delegate Functions
-    func closeButtonPressed(completionHandler: CompletionHandler) {
         
-        expensesContainerTopConstraint.constant = expensesContainerTopConstraint.constant - self.view.bounds.height
-        
-        UIView.animate(withDuration: 0.6,
-                       delay: 0, usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 0,
-                       options: [],
-                       animations: {
-                        self.shadowView.alpha = 0
-                        self.expensesContainerView.alpha = 0
-                        self.expensesContainerTopConstraint.constant = self.expensesContainerTopConstraint.constant + self.view.bounds.height
-        },
-                       completion: { finished in
-                        completionHandler?(finished)
-        })
-    }
-    
     func payBill(forAmount: Int) {
         if (forAmount <= gameScore) {
             gameScore = gameScore - forAmount
@@ -306,21 +270,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     }
     
     func advanceLevel() {
-        closeButtonPressed { (finished) in
-            if finished {
-                self.goToNextLevel()
-            }
-        }
-        
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "tabPopupSegue") {
-            tabPopupVC = segue.destination as! TabPopupViewController
-            tabPopupVC.tabPopupCloseDelegate = self
-            tabPopupVC.billPaymentDelegate = self
-        }
+        goToNextLevel()
     }
     
 }
@@ -332,5 +282,13 @@ extension UIColor {
         let blue = CGFloat(rgbValue & 0xFF)/256.0
         
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+    }
+    
+    func brandGreen() -> UIColor {
+        return UIColor().UIColorFromHex(rgbValue: 0x1EAA5F)
+    }
+    
+    func brandRed() -> UIColor {
+        return UIColor().UIColorFromHex(rgbValue: 0xEA4949)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  TabPopupTableViewCell.swift
+//  ExpenseTableViewCell.swift
 //  Saving Pennies
 //
 //  Created by Rajee Jones on 2/18/17.
@@ -9,12 +9,11 @@
 import UIKit
 
 protocol PayButtonDelegate: class {
-    func payButtonPressed(amount:Int)
-    func itemPaid()
+    func payButtonPressed(amount:Int, cell:UITableViewCell)
 }
 
 @IBDesignable
-class TabPopupTableViewCell: UITableViewCell {
+class ExpenseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var payBtn: PayButton!
@@ -31,22 +30,38 @@ class TabPopupTableViewCell: UITableViewCell {
     }
 
     @IBAction func payButtonPressed(_ sender: Any) {
-        if gameScore >= self.paymentAmount {
-            self.paid = true
-            payButtonDelegate?.itemPaid()
+        
+        payButtonDelegate?.payButtonPressed(amount: self.paymentAmount, cell: self)
+        
+    }
+    
+    
+    func reset() {
+        paid = false
+        self.paidCheckmarkImage.alpha = 0
+        self.payBtn.alpha = 1
+    }
+    
+    func animateItemPaid() {
+        if paid {
             UIView.animate(withDuration: 0.6,
                            delay: 0, usingSpringWithDamping: 0.6,
                            initialSpringVelocity: 0,
                            options: [],
                            animations: {
-                self.paidCheckmarkImage.alpha = 1
-                self.payBtn.alpha = 0
+                            self.paidCheckmarkImage.alpha = 1
+                            self.payBtn.alpha = 0
             }, completion: nil)
         }
-        
-        payButtonDelegate?.payButtonPressed(amount: self.paymentAmount)
-        
     }
+    
+    func canBePaid() -> Bool {
+        if gameScore >= self.paymentAmount {
+            return true
+        }
+        return false
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         //payButtonDelegate?.payButtonPressed(amount: self.paymentAmount)

@@ -15,10 +15,11 @@ let NumLevels = 4
 struct Expenses {
     var description: String
     var amount: Int
-    
+    var paid: Bool
     init(withExpense:String, value:Int) {
         description = withExpense
         amount = value
+        paid = false
     }
 }
 

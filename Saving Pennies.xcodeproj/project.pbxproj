@@ -40,12 +40,13 @@
 		69CAE9FC1DDEAB7900B10561 /* Montserrat-Hairline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69CAE9F71DDEAB7900B10561 /* Montserrat-Hairline.otf */; };
 		69CAE9FD1DDEAB7900B10561 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69CAE9F81DDEAB7900B10561 /* Montserrat-Light.otf */; };
 		69CAE9FE1DDEAB7900B10561 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69CAE9F91DDEAB7900B10561 /* Montserrat-Regular.otf */; };
-		EAD66B841E5905B800A313D5 /* TabPopupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */; };
-		EAD66B851E5905B800A313D5 /* TabPopupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */; };
-		EAD66B881E5918A300A313D5 /* TabPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */; };
+		EAD66B841E5905B800A313D5 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B821E5905B800A313D5 /* ExpenseTableViewCell.swift */; };
+		EAD66B851E5905B800A313D5 /* ExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD66B831E5905B800A313D5 /* ExpenseTableViewCell.xib */; };
 		EAD66B8B1E62B24100A313D5 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */; };
 		EAD66B8D1E62B25B00A313D5 /* PopupContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */; };
 		EAEA74B81E66811200AD1AA7 /* LogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA74B71E66811200AD1AA7 /* LogicController.swift */; };
+		EAEA74BA1E6694F800AD1AA7 /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAEA74B91E6694F800AD1AA7 /* PopupView.xib */; };
+		EAEA74BC1E6695B900AD1AA7 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA74BB1E6695B900AD1AA7 /* PopupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,12 +87,13 @@
 		69CAE9F91DDEAB7900B10561 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		82FB79029F22D3594E70BAFE /* Pods-Saving Pennies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saving Pennies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saving Pennies/Pods-Saving Pennies.debug.xcconfig"; sourceTree = "<group>"; };
 		BB84FAAD5065F6B3BE8D2433 /* Pods_Saving_Pennies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Saving_Pennies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPopupTableViewCell.swift; sourceTree = "<group>"; };
-		EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabPopupTableViewCell.xib; sourceTree = "<group>"; };
-		EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPopupViewController.swift; sourceTree = "<group>"; };
+		EAD66B821E5905B800A313D5 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
+		EAD66B831E5905B800A313D5 /* ExpenseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseTableViewCell.xib; sourceTree = "<group>"; };
 		EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
 		EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupContainer.swift; sourceTree = "<group>"; };
 		EAEA74B71E66811200AD1AA7 /* LogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogicController.swift; sourceTree = "<group>"; };
+		EAEA74B91E6694F800AD1AA7 /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
+		EAEA74BB1E6695B900AD1AA7 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				EAEA74B41E667ECE00AD1AA7 /* View Controllers */,
-				EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */,
 				EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */,
 				EAEA74B71E66811200AD1AA7 /* LogicController.swift */,
 			);
@@ -232,8 +233,10 @@
 				695FF56B1D41C41900D46A16 /* LaunchScreen.storyboard */,
 				695FF5621D41C41900D46A16 /* GameScene.swift */,
 				EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */,
-				EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */,
-				EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */,
+				EAD66B821E5905B800A313D5 /* ExpenseTableViewCell.swift */,
+				EAD66B831E5905B800A313D5 /* ExpenseTableViewCell.xib */,
+				EAEA74B91E6694F800AD1AA7 /* PopupView.xib */,
+				EAEA74BB1E6695B900AD1AA7 /* PopupView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -319,11 +322,12 @@
 				695FF56D1D41C41900D46A16 /* LaunchScreen.storyboard in Resources */,
 				69CAE9FA1DDEAB7900B10561 /* Montserrat-Black.otf in Resources */,
 				69385E8A1D68D3EC002448B7 /* Drip.wav in Resources */,
-				EAD66B851E5905B800A313D5 /* TabPopupTableViewCell.xib in Resources */,
+				EAD66B851E5905B800A313D5 /* ExpenseTableViewCell.xib in Resources */,
 				69385E7B1D68B4D0002448B7 /* Level_4.json in Resources */,
 				69385E8B1D68D3EC002448B7 /* Error.wav in Resources */,
 				69CAE9FE1DDEAB7900B10561 /* Montserrat-Regular.otf in Resources */,
 				69385E791D68B4D0002448B7 /* Level_2.json in Resources */,
+				EAEA74BA1E6694F800AD1AA7 /* PopupView.xib in Resources */,
 				69385E8E1D68D3EC002448B7 /* Scrape.wav in Resources */,
 				69385E771D68B4D0002448B7 /* Level_0.json in Resources */,
 				69385E891D68D3EC002448B7 /* Chomp.wav in Resources */,
@@ -401,12 +405,12 @@
 				698916261DE2BB16001A410B /* CharacterSelectionViewController.swift in Sources */,
 				695FF5631D41C41900D46A16 /* GameScene.swift in Sources */,
 				695FF5651D41C41900D46A16 /* GameViewController.swift in Sources */,
-				EAD66B841E5905B800A313D5 /* TabPopupTableViewCell.swift in Sources */,
+				EAD66B841E5905B800A313D5 /* ExpenseTableViewCell.swift in Sources */,
 				EAD66B8B1E62B24100A313D5 /* AnimationClass.swift in Sources */,
 				69385E7F1D68B6F3002448B7 /* Extensions.swift in Sources */,
 				69385E7D1D68B65A002448B7 /* Tile.swift in Sources */,
 				69385E901D68D8DD002448B7 /* Chain.swift in Sources */,
-				EAD66B881E5918A300A313D5 /* TabPopupViewController.swift in Sources */,
+				EAEA74BC1E6695B900AD1AA7 /* PopupView.swift in Sources */,
 				69391C351D485D13006E27D6 /* Coin.swift in Sources */,
 				695FF55F1D41C41900D46A16 /* AppDelegate.swift in Sources */,
 				69391C391D487210006E27D6 /* Array2D.swift in Sources */,

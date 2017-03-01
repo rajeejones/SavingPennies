@@ -10,18 +10,24 @@ import UIKit
 import SpriteKit
 
 var gameScore = 0
+var level: Level!
+
+var currentLevelNum = 0
+let formatter = NumberFormatter()
+
+
 typealias CompletionHandler = ((_ success:Bool) -> Void)?
 
 class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDelegate {
     
     // Mark: Variables
     var scene: GameScene!
-    var level: Level!
+    
     var movesLeft = 0
-    var currentLevelNum = 0
+    
     
     // Mark: Constants
-    let formatter = NumberFormatter()
+
     
     enum OverlayImageState {
         case GameOver, Shuffling, LevelComplete
@@ -92,9 +98,9 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
         // Present the scene.
         skView.presentScene(scene)
         
-        
         formatter.numberStyle = .currency
         formatter.locale = NSLocale.current
+        
         
         beginGame()
     }
@@ -139,7 +145,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
         switch overlayType {
         case .LevelComplete:
             scene.animateGameOver() {
-                self.setupLevel(levelNum: self.currentLevelNum)
+                self.setupLevel(levelNum: currentLevelNum)
                 
             }
             break
@@ -181,9 +187,9 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
             }
             self.updateLabels()
             
-            let columns = self.level.fillHoles()
+            let columns = level.fillHoles()
             self.scene.animateFallingCoins(columns) {
-                let columns = self.level.topUpCoins()
+                let columns = level.topUpCoins()
                 self.scene.animateNewCoins(columns) {
                     self.handleMatches()
                 }
@@ -233,7 +239,7 @@ class GameViewController: UIViewController, TabPopupCloseDelegate, BillPaymentDe
     
     func goToNextLevel() {
         showOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)
-        self.currentLevelNum = self.currentLevelNum < NumLevels ? self.currentLevelNum + 1 : 0
+        currentLevelNum = currentLevelNum < NumLevels ? currentLevelNum + 1 : 0
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             
             self.hideOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)

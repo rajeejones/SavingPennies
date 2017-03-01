@@ -12,11 +12,22 @@ let NumColumns = 7
 let NumRows = 7
 let NumLevels = 4
 
+struct Expenses {
+    var description: String
+    var amount: Int
+    
+    init(withExpense:String, value:Int) {
+        description = withExpense
+        amount = value
+    }
+}
+
 class Level {
     var coins: Array2D<Coin> = Array2D<Coin>(columns: NumColumns, rows: NumRows)
     var tiles: Array2D<Tile> = Array2D<Tile>(columns: NumColumns, rows: NumRows)
     var targetScore = 0
     var maximumMoves = 0
+    var expenses: [Expenses] = [Expenses]()
     public var possibleSwaps = Set<Swap>()
     fileprivate var comboMultiplier = 0
     
@@ -38,6 +49,11 @@ class Level {
         }
         targetScore = dictionary["targetScore"] as! Int
         maximumMoves = dictionary["moves"] as! Int
+        let tempExpense = dictionary["expenses"] as! Array<Dictionary<String, AnyObject>>
+        for item in tempExpense {
+            expenses.append(Expenses(withExpense: item["description"] as! String, value: item["amount"] as! Int))
+        }
+        
     }
     
     func coinAtColumn(_ column: Int, row: Int) -> Coin? {

@@ -9,4 +9,18 @@
 
   "targetScore" : 1000,
   "moves" : 15,
+    "expenses" : [ {
+                  "description" : "Mortgage",
+                  "amount" : 700
+                  },
+                  {
+                  "description" : "Phone Bill",
+                  "amount" : 110
+                  },
+                  {
+                  "description" : "Student Loan",
+                  "amount" : 190
+                  }
+                  
+                  ]
 }

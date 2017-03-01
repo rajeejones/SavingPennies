@@ -42,26 +42,14 @@ class GameScene: SKScene {
         super.init(size: size)
         
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//        let operand1 = 10 * (NumRows - 1)
-//        let operand2 = 10 * (NumColumns - 1)
-//        TileWidth = ((size.width - CGFloat(10 + operand1)) / CGFloat(NumRows))
-//        TileHeight = ((size.height - CGFloat(10 + operand2)) / CGFloat(NumColumns))
-        
-//        let background = SKSpriteNode(color: UIColor.clear, size: size)
-//        addChild(background)
-        
-//        addChild(gameLayer)
         
         let layerPosition = CGPoint(
             x: -TileWidth * CGFloat(NumColumns) / 2,
             y: -TileHeight * CGFloat(NumRows) / 2)
-//        let layerPosition = CGPoint(x:-152,y:-320)
-//        let layerPosition = CGPoint(x: -152, y: 0)
-        
+
         coinsLayer.position = layerPosition
         
         addChild(coinsLayer)
-//        gameLayer.isHidden = true
         swipeFromColumn = nil
         swipeFromRow = nil
         
@@ -96,9 +84,6 @@ class GameScene: SKScene {
         return CGPoint(
             x: CGFloat(column)*TileWidth + TileWidth/2,
             y: CGFloat(row)*TileHeight + TileHeight/2)
-//        return CGPoint(
-//            x: startIndexOfSprite(n: column),
-//            y: CGFloat(row)*TileHeight + TileHeight/2)
     }
     
     func startIndexOfSprite(n:Int) -> CGFloat {

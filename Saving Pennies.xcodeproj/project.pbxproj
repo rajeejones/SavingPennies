@@ -161,30 +161,12 @@
 		695FF55D1D41C41900D46A16 /* Saving Pennies */ = {
 			isa = PBXGroup;
 			children = (
+				EAEA74B61E667EEC00AD1AA7 /* Model */,
+				EAEA74B51E667EE000AD1AA7 /* View */,
+				EAEA74B31E667EAC00AD1AA7 /* Controllers */,
 				69CAE9F31DDEAB2800B10561 /* Resources */,
 				695FF55E1D41C41900D46A16 /* AppDelegate.swift */,
-				698916251DE2BB16001A410B /* CharacterSelectionViewController.swift */,
-				695FF5621D41C41900D46A16 /* GameScene.swift */,
-				695FF5641D41C41900D46A16 /* GameViewController.swift */,
-				69391C341D485D12006E27D6 /* Coin.swift */,
-				69391C381D487210006E27D6 /* Array2D.swift */,
-				69385E7C1D68B65A002448B7 /* Tile.swift */,
-				69391C3A1D4872AA006E27D6 /* Level.swift */,
-				69385E7E1D68B6F3002448B7 /* Extensions.swift */,
-				69385E801D68BC74002448B7 /* Swap.swift */,
-				69385E8F1D68D8DD002448B7 /* Chain.swift */,
-				EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */,
-				EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */,
-				69385E821D68D3EC002448B7 /* Sounds */,
-				69385E711D68B4D0002448B7 /* Levels */,
-				695FF5661D41C41900D46A16 /* Main.storyboard */,
-				695FF5691D41C41900D46A16 /* Assets.xcassets */,
-				69391C361D48711D006E27D6 /* Sprites.atlas */,
-				695FF56B1D41C41900D46A16 /* LaunchScreen.storyboard */,
 				695FF56E1D41C41900D46A16 /* Info.plist */,
-				EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */,
-				EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */,
-				EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */,
 			);
 			path = "Saving Pennies";
 			sourceTree = "<group>";
@@ -192,6 +174,10 @@
 		69CAE9F31DDEAB2800B10561 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				69385E821D68D3EC002448B7 /* Sounds */,
+				69385E711D68B4D0002448B7 /* Levels */,
+				695FF5691D41C41900D46A16 /* Assets.xcassets */,
+				69391C361D48711D006E27D6 /* Sprites.atlas */,
 				69CAE9F41DDEAB3100B10561 /* Fonts */,
 			);
 			name = Resources;
@@ -215,6 +201,52 @@
 				BB84FAAD5065F6B3BE8D2433 /* Pods_Saving_Pennies.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAEA74B31E667EAC00AD1AA7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EAD66B861E5918A300A313D5 /* TabPopupViewController.swift */,
+				EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */,
+				EAEA74B41E667ECE00AD1AA7 /* View Controllers */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		EAEA74B41E667ECE00AD1AA7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				698916251DE2BB16001A410B /* CharacterSelectionViewController.swift */,
+				695FF5641D41C41900D46A16 /* GameViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		EAEA74B51E667EE000AD1AA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				695FF5661D41C41900D46A16 /* Main.storyboard */,
+				695FF56B1D41C41900D46A16 /* LaunchScreen.storyboard */,
+				695FF5621D41C41900D46A16 /* GameScene.swift */,
+				EAD66B8C1E62B25B00A313D5 /* PopupContainer.swift */,
+				EAD66B821E5905B800A313D5 /* TabPopupTableViewCell.swift */,
+				EAD66B831E5905B800A313D5 /* TabPopupTableViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		EAEA74B61E667EEC00AD1AA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				69385E7E1D68B6F3002448B7 /* Extensions.swift */,
+				69391C341D485D12006E27D6 /* Coin.swift */,
+				69391C381D487210006E27D6 /* Array2D.swift */,
+				69385E7C1D68B65A002448B7 /* Tile.swift */,
+				69391C3A1D4872AA006E27D6 /* Level.swift */,
+				69385E801D68BC74002448B7 /* Swap.swift */,
+				69385E8F1D68D8DD002448B7 /* Chain.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -9,25 +9,31 @@
 import UIKit
 import SpriteKit
 
+var gameScore = 0
+var level: Level!
 
-class GameViewController: UIViewController {
+var currentLevelNum = 0
+let formatter = NumberFormatter()
+
+
+typealias CompletionHandler = ((_ success:Bool) -> Void)?
+
+class GameViewController: UIViewController, BillPaymentDelegate {
     
     // Mark: Variables
     var scene: GameScene!
-    var level: Level!
+    var logicController:LogicController!
     var movesLeft = 0
-    var score = 0
-    var currentLevelNum = 0
     
     // Mark: Constants
-    let formatter = NumberFormatter()
+
     
     enum OverlayImageState {
         case GameOver, Shuffling, LevelComplete
     }
     
     // Mark: Outlets
-    @IBOutlet weak var shuffleButton: UIButton!
+
     @IBOutlet weak var dueMessageLabel: UILabel!
     @IBOutlet weak var remainingMovesLabel: UILabel!
     @IBOutlet weak var bankAmountLabel: UILabel!
@@ -36,7 +42,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var overlayImage: UIImageView!
     
     @IBOutlet weak var menuButton: UIButton!
-
+    @IBOutlet weak var shuffleButton: UIButton!
+    @IBOutlet weak var expensesButton: UIButton!
+    
     // Mark: View Overrides
     override var prefersStatusBarHidden: Bool {
         get {
@@ -60,14 +68,16 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        formatter.numberStyle = .currency
+        formatter.locale = NSLocale.current
+                
+        overlayImage.isHidden = true;
+        
         setupLevel(levelNum: currentLevelNum)
-
     }
     
     func setupLevel(levelNum: Int) {
-        overlayImage.isHidden = true;
         
-        //        self.view = gameSkView
         // Configure the view.
         let skView = gameSkView as SKView
         skView.isMultipleTouchEnabled = false
@@ -78,33 +88,32 @@ class GameViewController: UIViewController {
         scene.scaleMode = .aspectFill
         
         level = Level(filename: "Level_\(levelNum)")
-        scene.level = level
+        logicController = LogicController(withLevel: level)
+        scene.logicController = logicController
         scene.swipeHandler = handleSwipe
+        
         
         // Present the scene.
         skView.presentScene(scene)
         
-        
-        formatter.numberStyle = .currency
-        formatter.locale = NSLocale.current
-        
+
         beginGame()
     }
     
-    // Mark: Functions
+
     func beginGame() {
         scene.animateBeginGame() { }
         movesLeft = level.maximumMoves
-        score = 0
+        gameScore = 0
         updateLabels()
-        level.resetComboMultiplier()
+        logicController.resetComboMultiplier()
         shuffle()
     }
     
     func shuffle() {
         
         scene.removeAllCoinSprites()
-        let newCoins = level.shuffle()
+        let newCoins = logicController.shuffle()
         scene.addSpritesForCoins(newCoins)
     }
     
@@ -131,7 +140,7 @@ class GameViewController: UIViewController {
         switch overlayType {
         case .LevelComplete:
             scene.animateGameOver() {
-                self.setupLevel(levelNum: self.currentLevelNum)
+                self.setupLevel(levelNum: currentLevelNum)
                 
             }
             break
@@ -147,8 +156,8 @@ class GameViewController: UIViewController {
     func handleSwipe(_ swap: Swap) {
         view.isUserInteractionEnabled = false
         
-        if level.isPossibleSwap(swap) {
-            level.performSwap(swap)
+        if logicController.isPossibleSwap(swap) {
+            logicController.performSwap(swap)
             scene.animateSwap(swap, completion: handleMatches)
             
         } else {
@@ -159,7 +168,7 @@ class GameViewController: UIViewController {
     }
     
     func handleMatches() {
-        let chains = level.removeMatches()
+        let chains = logicController.removeMatches()
         
         if chains.count == 0 {
             beginNextTurn()
@@ -169,13 +178,13 @@ class GameViewController: UIViewController {
         scene.animateMatchedCoins(chains) {
             
             for chain in chains {
-                self.score += chain.score
+                gameScore += chain.score
             }
             self.updateLabels()
             
-            let columns = self.level.fillHoles()
+            let columns = self.logicController.fillHoles()
             self.scene.animateFallingCoins(columns) {
-                let columns = self.level.topUpCoins()
+                let columns = self.logicController.topUpCoins()
                 self.scene.animateNewCoins(columns) {
                     self.handleMatches()
                 }
@@ -184,8 +193,8 @@ class GameViewController: UIViewController {
     }
     
     func beginNextTurn() {
-        level.resetComboMultiplier()
-        level.detectPossibleSwaps()
+        logicController.resetComboMultiplier()
+        logicController.detectPossibleSwaps()
         
         if level.possibleSwaps.count < 1 {
             showOverlay(overlayType: OverlayImageState.Shuffling)
@@ -201,21 +210,19 @@ class GameViewController: UIViewController {
     
     func updateLabels() {
         remainingMovesLabel.text = String(format: "%ld", movesLeft) + " moves"
-        bankAmountLabel.text = formatter.string(from: NSNumber(value: score))
+        bankAmountLabel.text = formatter.string(from: NSNumber(value: gameScore))
         
     }
     
     func decrementMoves() {
         
-        if score >= level.targetScore {
-            showOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)
-            self.currentLevelNum = self.currentLevelNum < NumLevels ? self.currentLevelNum + 1 : 0
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                
-                self.hideOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)
-            }
-        }
-        else if movesLeft <= 1 {
+        
+        
+//        if gameScore >= level.targetScore {
+//            goToNextLevel()
+//        }
+//        else
+        if movesLeft <= 1 {
             showOverlay(overlayType: GameViewController.OverlayImageState.GameOver)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 
@@ -228,17 +235,43 @@ class GameViewController: UIViewController {
         }
     }
     
-    // Mark: Actions
-    @IBAction func shuffleButtonPressed(_ sender: UIButton) {
-        if movesLeft <= 0 {
-            beginGame()
-        } else {
-            shuffle()
-            decrementMoves()
+    func goToNextLevel() {
+        showOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)
+        currentLevelNum = currentLevelNum < NumLevels ? currentLevelNum + 1 : 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            
+            self.hideOverlay(overlayType: GameViewController.OverlayImageState.LevelComplete)
         }
     }
     
+    // Mark: Actions
+    @IBAction func shuffleButtonPressed(_ sender: UIButton) {
+        shuffle()
+        decrementMoves()
+    }
     
+    @IBAction func expensesButtonPressed(_ sender: Any) {
+        let xibView = Bundle.main.loadNibNamed("PopupView", owner: nil, options: nil)?[0] as! PopupView
+        xibView.popupType = PopupViewType.expenses
+        xibView.billPaymentDelegate = self
+        PopupContainer.generatePopupWithView(xibView).show()
+        
+    }
+        
+    func payBill(forAmount: Int) {
+        if (forAmount <= gameScore) {
+            gameScore = gameScore - forAmount
+            self.updateLabels()
+        } else {
+            let alert = UIAlertController(title: "Insufficient Funds", message: "You currently dont have enough money in the bank to pay this right now.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func advanceLevel() {
+        goToNextLevel()
+    }
     
 }
 
@@ -249,5 +282,13 @@ extension UIColor {
         let blue = CGFloat(rgbValue & 0xFF)/256.0
         
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+    }
+    
+    func brandGreen() -> UIColor {
+        return UIColor().UIColorFromHex(rgbValue: 0x1EAA5F)
+    }
+    
+    func brandRed() -> UIColor {
+        return UIColor().UIColorFromHex(rgbValue: 0xEA4949)
     }
 }

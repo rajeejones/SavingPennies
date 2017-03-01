@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Dictionary {
     static func loadJSONFromBundle(_ filename: String) -> Dictionary <String, AnyObject>? {
@@ -32,5 +33,23 @@ extension Dictionary {
             }
         }
         return dictionaryOK
+    }
+}
+
+class AnimationView: UIView {
+    func animateWithFlipEffect(withCompletionHandler completionHandler:(() -> Void)?) {
+        AnimationClass.flipAnimation(self, completion: completionHandler)
+    }
+    func animateWithBounceEffect(withCompletionHandler completionHandler:(() -> Void)?) {
+        let viewAnimation = AnimationClass.BounceEffect()
+        viewAnimation(self) { _ in
+            completionHandler?()
+        }
+    }
+    func animateWithFadeEffect(withCompletionHandler completionHandler:(() -> Void)?) {
+        let viewAnimation = AnimationClass.fadeOutEffect()
+        viewAnimation(self) { _ in
+            completionHandler?()
+        }
     }
 }

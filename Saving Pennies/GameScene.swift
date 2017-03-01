@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var level: Level!
+    var logicController: LogicController!
     var swipeHandler: ((Swap) -> ())?
     var selectionSprite = SKSpriteNode()
     
@@ -42,26 +42,14 @@ class GameScene: SKScene {
         super.init(size: size)
         
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//        let operand1 = 10 * (NumRows - 1)
-//        let operand2 = 10 * (NumColumns - 1)
-//        TileWidth = ((size.width - CGFloat(10 + operand1)) / CGFloat(NumRows))
-//        TileHeight = ((size.height - CGFloat(10 + operand2)) / CGFloat(NumColumns))
-        
-//        let background = SKSpriteNode(color: UIColor.clear, size: size)
-//        addChild(background)
-        
-//        addChild(gameLayer)
         
         let layerPosition = CGPoint(
             x: -TileWidth * CGFloat(NumColumns) / 2,
             y: -TileHeight * CGFloat(NumRows) / 2)
-//        let layerPosition = CGPoint(x:-152,y:-320)
-//        let layerPosition = CGPoint(x: -152, y: 0)
-        
+
         coinsLayer.position = layerPosition
         
         addChild(coinsLayer)
-//        gameLayer.isHidden = true
         swipeFromColumn = nil
         swipeFromRow = nil
         
@@ -96,9 +84,6 @@ class GameScene: SKScene {
         return CGPoint(
             x: CGFloat(column)*TileWidth + TileWidth/2,
             y: CGFloat(row)*TileHeight + TileHeight/2)
-//        return CGPoint(
-//            x: startIndexOfSprite(n: column),
-//            y: CGFloat(row)*TileHeight + TileHeight/2)
     }
     
     func startIndexOfSprite(n:Int) -> CGFloat {
@@ -131,7 +116,7 @@ class GameScene: SKScene {
         let (success, column, row) = convertPoint(location)
         if success {
             // 3
-            if let coin = level.coinAtColumn(column, row: row) {
+            if let coin = logicController.coinAtColumn(column, row: row) {
                 // 4
                 swipeFromColumn = column
                 swipeFromRow = row
@@ -195,8 +180,8 @@ class GameScene: SKScene {
         guard toColumn >= 0 && toColumn < NumColumns else { return }
         guard toRow >= 0 && toRow < NumRows else { return }
         // 3
-        if let toCoin = level.coinAtColumn(toColumn, row: toRow),
-            let fromCoin = level.coinAtColumn(swipeFromColumn!, row: swipeFromRow!) {
+        if let toCoin = logicController.coinAtColumn(toColumn, row: toRow),
+            let fromCoin = logicController.coinAtColumn(swipeFromColumn!, row: swipeFromRow!) {
             // 4
             if let handler = swipeHandler {
                 let swap = Swap(coinA: fromCoin, coinB: toCoin)

@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="147" width="414" height="589"/>
                                 <subviews>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="hbI-Qt-2Lg" customClass="SKView">
-                                        <rect key="frame" x="0.0" y="138" width="414" height="394"/>
+                                        <rect key="frame" x="0.0" y="138" width="414" height="365"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShufflingOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="ZOI-5e-SEV">
                                                 <rect key="frame" x="0.0" y="169" width="414" height="128"/>
@@ -64,14 +64,14 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WY5-po-Mhk" userLabel="ShuffleButton">
-                                        <rect key="frame" x="72" y="550" width="270" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WY5-po-Mhk" userLabel="ShuffleButton">
+                                        <rect key="frame" x="39" y="521" width="336" height="59"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="WY5-po-Mhk" secondAttribute="height" multiplier="23:10" constant="201" id="Hse-Xx-HPM"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="oql-xq-Orj"/>
                                         </constraints>
-                                        <state key="normal" title="Shuffle">
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
+                                        <state key="normal" title="Shuffle" backgroundImage="Shuffle Button">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -210,94 +210,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Character" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXf-N2-ryO">
-                                <rect key="frame" x="73" y="75" width="268" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="crA-4q-hgI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="28"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k08-Um-OaD">
-                                <rect key="frame" x="71" y="546" width="272" height="53"/>
-                                <color key="backgroundColor" red="0.13333333333333333" green="0.6588235294117647" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="apy-XX-KtQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
-                                <state key="normal" title="Play">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="Mls-zH-Dpr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k08-Um-OaD">
+                                <rect key="frame" x="55" y="487" width="305" height="82"/>
+                                <state key="normal" image="Play Button">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="BV1-FR-VrT" kind="show" id="3mP-er-Npr"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tz9-He-aFP">
-                                <rect key="frame" x="0.0" y="132" width="414" height="376"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Joe Card" translatesAutoresizingMaskIntoConstraints="NO" id="ckB-g9-FSt">
-                                        <rect key="frame" x="43.666666666666657" y="10" width="327" height="356"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="327" id="p2t-BD-jzS"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Amy Card" translatesAutoresizingMaskIntoConstraints="NO" id="SCW-vc-t2y">
-                                        <rect key="frame" x="370.66666666666663" y="10" width="326.99999999999989" height="356"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="327" id="uyw-Ym-DAf"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bryan Card" translatesAutoresizingMaskIntoConstraints="NO" id="OLg-Lq-zEn">
-                                        <rect key="frame" x="-283.66666666666669" y="10" width="327.33333333333337" height="356"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="327" id="NtY-iO-8U1"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="dlI-qQ-tT1">
+                                <rect key="frame" x="27" y="184" width="361" height="177"/>
                                 <constraints>
-                                    <constraint firstItem="ckB-g9-FSt" firstAttribute="centerX" secondItem="Tz9-He-aFP" secondAttribute="centerX" id="0oJ-Sb-lY3"/>
-                                    <constraint firstAttribute="bottom" secondItem="ckB-g9-FSt" secondAttribute="bottom" constant="10" id="9gY-vQ-G4p"/>
-                                    <constraint firstItem="ckB-g9-FSt" firstAttribute="bottom" secondItem="SCW-vc-t2y" secondAttribute="bottom" id="AHN-OE-Nhv"/>
-                                    <constraint firstItem="ckB-g9-FSt" firstAttribute="top" secondItem="Tz9-He-aFP" secondAttribute="top" constant="10" id="Jdb-eL-V2v"/>
-                                    <constraint firstAttribute="trailing" secondItem="SCW-vc-t2y" secondAttribute="trailing" constant="-303" id="K5W-VX-K3k"/>
-                                    <constraint firstItem="ckB-g9-FSt" firstAttribute="top" secondItem="SCW-vc-t2y" secondAttribute="top" id="Mw2-HJ-huX"/>
-                                    <constraint firstItem="SCW-vc-t2y" firstAttribute="leading" secondItem="ckB-g9-FSt" secondAttribute="trailing" id="ODb-Tw-hyt"/>
-                                    <constraint firstItem="OLg-Lq-zEn" firstAttribute="bottom" secondItem="ckB-g9-FSt" secondAttribute="bottom" id="Ske-02-VYa"/>
-                                    <constraint firstItem="OLg-Lq-zEn" firstAttribute="top" secondItem="ckB-g9-FSt" secondAttribute="top" id="flH-xQ-GWQ"/>
-                                    <constraint firstItem="ckB-g9-FSt" firstAttribute="leading" secondItem="OLg-Lq-zEn" secondAttribute="trailing" id="gt7-2b-7Sr"/>
-                                    <constraint firstItem="ckB-g9-FSt" firstAttribute="centerY" secondItem="Tz9-He-aFP" secondAttribute="centerY" id="kyU-9E-D2K"/>
+                                    <constraint firstAttribute="height" constant="177" id="G0j-yr-nMC"/>
                                 </constraints>
-                            </scrollView>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.53725490200000003" green="0.76862745099999996" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="k08-Um-OaD" firstAttribute="top" secondItem="Tz9-He-aFP" secondAttribute="bottom" constant="38" id="31q-7F-Xyg"/>
-                            <constraint firstItem="vXf-N2-ryO" firstAttribute="centerX" secondItem="lEO-gg-bbF" secondAttribute="centerX" id="Cbc-Z9-vGc"/>
-                            <constraint firstItem="k08-Um-OaD" firstAttribute="leading" secondItem="lEO-gg-bbF" secondAttribute="leadingMargin" constant="51" id="JCb-ab-SPn"/>
-                            <constraint firstItem="vXf-N2-ryO" firstAttribute="top" secondItem="8EY-cu-Ghk" secondAttribute="bottom" constant="55" id="Oo9-8W-jIQ"/>
-                            <constraint firstItem="Tz9-He-aFP" firstAttribute="top" secondItem="vXf-N2-ryO" secondAttribute="bottom" constant="23" id="d0p-kp-MJJ"/>
-                            <constraint firstItem="2DR-F1-GA6" firstAttribute="top" secondItem="k08-Um-OaD" secondAttribute="bottom" constant="137" id="g9V-fZ-FL9"/>
-                            <constraint firstItem="vXf-N2-ryO" firstAttribute="centerX" secondItem="k08-Um-OaD" secondAttribute="centerX" id="gHJ-Qp-tKX"/>
-                            <constraint firstItem="Tz9-He-aFP" firstAttribute="leading" secondItem="lEO-gg-bbF" secondAttribute="leading" id="jq1-95-G3X"/>
-                            <constraint firstItem="vXf-N2-ryO" firstAttribute="leading" secondItem="lEO-gg-bbF" secondAttribute="leadingMargin" constant="53" id="q2D-lK-wUi"/>
-                            <constraint firstItem="Tz9-He-aFP" firstAttribute="centerX" secondItem="lEO-gg-bbF" secondAttribute="centerX" id="wqv-fP-SCZ"/>
+                            <constraint firstItem="dlI-qQ-tT1" firstAttribute="top" secondItem="8EY-cu-Ghk" secondAttribute="bottom" constant="164" id="0Cv-Hm-KA7"/>
+                            <constraint firstItem="dlI-qQ-tT1" firstAttribute="centerX" secondItem="k08-Um-OaD" secondAttribute="centerX" id="N1O-7Y-8Ij"/>
+                            <constraint firstItem="Mls-zH-Dpr" firstAttribute="bottom" secondItem="2DR-F1-GA6" secondAttribute="top" id="g1N-v7-M5y"/>
+                            <constraint firstItem="Mls-zH-Dpr" firstAttribute="leading" secondItem="lEO-gg-bbF" secondAttribute="leading" id="gQK-31-Aml"/>
+                            <constraint firstItem="Mls-zH-Dpr" firstAttribute="centerX" secondItem="k08-Um-OaD" secondAttribute="centerX" id="kQy-XJ-k96"/>
+                            <constraint firstItem="dlI-qQ-tT1" firstAttribute="leading" secondItem="lEO-gg-bbF" secondAttribute="leadingMargin" constant="7" id="ncS-AM-XW3"/>
+                            <constraint firstAttribute="trailing" secondItem="Mls-zH-Dpr" secondAttribute="trailing" id="w9U-1a-Ha6"/>
+                            <constraint firstItem="Mls-zH-Dpr" firstAttribute="top" secondItem="lEO-gg-bbF" secondAttribute="top" id="xAS-DS-kyG"/>
+                            <constraint firstItem="2DR-F1-GA6" firstAttribute="top" secondItem="k08-Um-OaD" secondAttribute="bottom" constant="167" id="yqe-84-VVe"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="playButton" destination="k08-Um-OaD" id="npM-0X-mfq"/>
-                        <outlet property="scrollView" destination="Tz9-He-aFP" id="9rx-dj-eD2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4b-8p-rZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1210.4000000000001" y="89.505247376311857"/>
+            <point key="canvasLocation" x="-1211.5942028985507" y="88.858695652173921"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Amy Card" width="309" height="277"/>
-        <image name="Bryan Card" width="309" height="277"/>
-        <image name="Joe Card" width="309" height="277"/>
+        <image name="BackgroundImage" width="375" height="667"/>
+        <image name="Logo" width="357" height="170"/>
+        <image name="Play Button" width="305" height="82"/>
+        <image name="Shuffle Button" width="316" height="59"/>
         <image name="ShufflingOverlay" width="375" height="116"/>
         <image name="assetsButtonImage" width="34" height="41"/>
         <image name="expensesButtonImage" width="34" height="36"/>

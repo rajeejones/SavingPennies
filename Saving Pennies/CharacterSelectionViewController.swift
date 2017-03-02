@@ -33,5 +33,9 @@ class CharacterSelectionViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction public func unwindToCharacterSelectViewController(_ sender: UIStoryboardSegue) {
+    }
+
 
 }

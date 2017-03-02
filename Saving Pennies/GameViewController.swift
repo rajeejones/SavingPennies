@@ -72,7 +72,7 @@ class GameViewController: UIViewController, BillPaymentDelegate {
         formatter.locale = NSLocale.current
                 
         overlayImage.isHidden = true;
-        
+        currentLevelNum = 0
         setupLevel(levelNum: currentLevelNum)
     }
     
@@ -147,6 +147,7 @@ class GameViewController: UIViewController, BillPaymentDelegate {
         case .GameOver:
             scene.animateGameOver() {
                 print("GAME OVER")
+                self.performSegue(withIdentifier: "unwindToCharacterSelect", sender: self)
             }
         default:
             shuffle()

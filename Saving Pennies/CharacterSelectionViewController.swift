@@ -7,14 +7,34 @@
 //
 
 import UIKit
+import AVFoundation
+
+var backgroundMusicPlayer = AVAudioPlayer()
+
+func playBackgroundMusic(filename: String) {
+    let url = Bundle.main.url(forResource: filename, withExtension: nil)
+    guard let newURL = url else {
+        print("Could not find file: \(filename)")
+        return
+    }
+    do {
+        backgroundMusicPlayer = try AVAudioPlayer(contentsOf: newURL)
+        backgroundMusicPlayer.numberOfLoops = -1
+        backgroundMusicPlayer.prepareToPlay()
+        backgroundMusicPlayer.play()
+    } catch let error as NSError {
+        print(error.description)
+    }
+}
 
 class CharacterSelectionViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var playButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        playBackgroundMusic(filename: "Mining by Moonlight.mp3")
         // Do any additional setup after loading the view.
     }
 

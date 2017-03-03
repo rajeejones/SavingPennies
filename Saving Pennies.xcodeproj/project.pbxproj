@@ -47,6 +47,7 @@
 		EAEA74B81E66811200AD1AA7 /* LogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA74B71E66811200AD1AA7 /* LogicController.swift */; };
 		EAEA74BA1E6694F800AD1AA7 /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAEA74B91E6694F800AD1AA7 /* PopupView.xib */; };
 		EAEA74BC1E6695B900AD1AA7 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA74BB1E6695B900AD1AA7 /* PopupView.swift */; };
+		EAEA74BE1E6941D400AD1AA7 /* Farty-McSty.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EAEA74BD1E6941D400AD1AA7 /* Farty-McSty.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		EAEA74B71E66811200AD1AA7 /* LogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogicController.swift; sourceTree = "<group>"; };
 		EAEA74B91E6694F800AD1AA7 /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
 		EAEA74BB1E6695B900AD1AA7 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		EAEA74BD1E6941D400AD1AA7 /* Farty-McSty.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Farty-McSty.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		69385E821D68D3EC002448B7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				EAEA74BD1E6941D400AD1AA7 /* Farty-McSty.mp3 */,
 				69385E831D68D3EC002448B7 /* Chomp.wav */,
 				69385E911D691415002448B7 /* Whoosh.wav */,
 				69385E841D68D3EC002448B7 /* Drip.wav */,
@@ -327,6 +330,7 @@
 				69385E8B1D68D3EC002448B7 /* Error.wav in Resources */,
 				69CAE9FE1DDEAB7900B10561 /* Montserrat-Regular.otf in Resources */,
 				69385E791D68B4D0002448B7 /* Level_2.json in Resources */,
+				EAEA74BE1E6941D400AD1AA7 /* Farty-McSty.mp3 in Resources */,
 				EAEA74BA1E6694F800AD1AA7 /* PopupView.xib in Resources */,
 				69385E8E1D68D3EC002448B7 /* Scrape.wav in Resources */,
 				69385E771D68B4D0002448B7 /* Level_0.json in Resources */,

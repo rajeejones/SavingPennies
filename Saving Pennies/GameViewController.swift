@@ -88,6 +88,7 @@ class GameViewController: UIViewController, BillPaymentDelegate {
         scene.scaleMode = .aspectFill
         
         level = Level(filename: "Level_\(levelNum)")
+        
         logicController = LogicController(withLevel: level)
         scene.logicController = logicController
         scene.swipeHandler = handleSwipe
@@ -103,7 +104,7 @@ class GameViewController: UIViewController, BillPaymentDelegate {
 
     func beginGame() {
         scene.animateBeginGame() { }
-        movesLeft = level.maximumMoves
+        movesLeft = level.movesLeft
         gameScore = 0
         updateLabels()
         logicController.resetComboMultiplier()

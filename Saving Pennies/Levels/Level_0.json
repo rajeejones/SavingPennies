@@ -8,10 +8,10 @@
               [1, 1, 1, 1, 1, 1, 1 ]],
 
   "targetScore" : 1000,
-  "moves" : 15,
+  "moves" : 18,
     "expenses" : [ {
                   "description" : "Mortgage",
-                  "amount" : 700
+                  "amount" : 400
                   },
                   {
                   "description" : "Phone Bill",

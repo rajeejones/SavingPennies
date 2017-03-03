@@ -23,12 +23,60 @@ struct Expenses {
     }
 }
 
+enum InsuranceType {
+    case life, health, property
+}
+
+enum Powerup {
+    case plus2Moves, plus5Moves, plus10Moves, gain, loss
+}
+
+struct Insurance {
+    var type:InsuranceType!
+    var description:String
+    var power:Powerup
+}
+
+struct Investment {
+    
+}
+
+struct Credit {
+    
+}
+
 class Level {
+    /**
+        The amount of money to carry on to next level
+     */
+    var savingsAmount = 0
+    /**
+        If you lose money by a coin, the amount is first subtracted from this amount
+    */
+    var emergencySavingsAmount = 0
+    /**
+        Add moves based on the insurance type when movesleft = 0
+     */
+    var insurance:Insurance?
+    /**
+        Money that can be invested
+     */
+    var investment:Investment?
+    /**
+        Adds money to bank, but also adds expense until paid off with interest
+     */
+    var credit:Credit?
+    
+    
+    var levelNumber = 0
+    var movesLeft = 0
+    var expenses: [Expenses] = [Expenses]()
+    var targetScore = 0
+    
     var coins: Array2D<Coin> = Array2D<Coin>(columns: NumColumns, rows: NumRows)
     var tiles: Array2D<Tile> = Array2D<Tile>(columns: NumColumns, rows: NumRows)
-    var targetScore = 0
-    var maximumMoves = 0
-    var expenses: [Expenses] = [Expenses]()
+
+
     public var possibleSwaps = Set<Swap>()
     
     
@@ -49,7 +97,7 @@ class Level {
             }
         }
         targetScore = dictionary["targetScore"] as! Int
-        maximumMoves = dictionary["moves"] as! Int
+        movesLeft = dictionary["moves"] as! Int
         let tempExpense = dictionary["expenses"] as! Array<Dictionary<String, AnyObject>>
         for item in tempExpense {
             expenses.append(Expenses(withExpense: item["description"] as! String, value: item["amount"] as! Int))

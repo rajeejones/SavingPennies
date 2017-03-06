@@ -22,6 +22,7 @@ func playBackgroundMusic(filename: String) {
         backgroundMusicPlayer.numberOfLoops = -1
         backgroundMusicPlayer.prepareToPlay()
         backgroundMusicPlayer.play()
+        backgroundMusicPlayer.volume = 0.7
     } catch let error as NSError {
         print(error.description)
     }

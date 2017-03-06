@@ -37,7 +37,22 @@ class LogicController {
     fileprivate func calculateScores(chains: Set<Chain>) {
         // 3-chain is 60 pts, 4-chain is 120, 5-chain is 180, and so on
         for chain in chains {
-            chain.score = 60 * (chain.length - 2) * comboMultiplier
+            switch chain.firstCoin().cointype {
+            case .penny:
+                chain.score = 40 * (chain.length - 2) * comboMultiplier
+                break
+            case .bag:
+                chain.score = 100 * (chain.length - 2) * comboMultiplier
+                //print("Matched a BAG!")
+                break
+            case .tag:
+                chain.score = -40 * (chain.length - 2) * comboMultiplier
+                //print("Matched a TAG!")
+                break
+            default:
+                chain.score = 60 * (chain.length - 2) * comboMultiplier
+            }
+            
             comboMultiplier += 1
         }
     }

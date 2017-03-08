@@ -19,6 +19,7 @@ class GameScene: SKScene {
     
     let gameLayer = SKNode()
     let coinsLayer = SKNode()
+    let tilesLayer = SKNode()
     
     let swapSound = SKAction.playSoundFileNamed("Whoosh.wav", waitForCompletion: false)
     let invalidSwapSound = SKAction.playSoundFileNamed("Error.wav", waitForCompletion: false)
@@ -48,8 +49,11 @@ class GameScene: SKScene {
             y: -TileHeight * CGFloat(NumRows) / 2)
 
         coinsLayer.position = layerPosition
+        tilesLayer.position = layerPosition
         
+        addChild(tilesLayer)
         addChild(coinsLayer)
+        
         swipeFromColumn = nil
         swipeFromRow = nil
         
@@ -77,6 +81,19 @@ class GameScene: SKScene {
                         SKAction.scale(to: 1.0, duration: 0.25)
                         ])
                     ]))
+        }
+    }
+    
+    func addTiles() {
+        for row in 0..<NumRows {
+            for column in 0..<NumColumns {
+                if logicController.tileAtColumn(column, row: row) != nil {
+                    let tileNode = SKSpriteNode(imageNamed: "Tile")
+                    tileNode.size = CGSize(width: TileWidth, height: TileHeight)
+                    tileNode.position = pointForColumn(column, row: row)
+                    tilesLayer.addChild(tileNode)
+                }
+            }
         }
     }
     

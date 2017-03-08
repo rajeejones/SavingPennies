@@ -92,7 +92,7 @@ class GameViewController: UIViewController, BillPaymentDelegate {
         logicController = LogicController(withLevel: level)
         scene.logicController = logicController
         scene.swipeHandler = handleSwipe
-        
+        scene.addTiles()
         
         // Present the scene.
         skView.presentScene(scene)

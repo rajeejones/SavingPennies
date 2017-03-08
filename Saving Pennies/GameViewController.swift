@@ -81,11 +81,12 @@ class GameViewController: UIViewController, BillPaymentDelegate {
         // Configure the view.
         let skView = gameSkView as SKView
         skView.isMultipleTouchEnabled = false
-        
+       
         // Create and configure the scene.
         scene = GameScene(size: skView.bounds.size)
         //scene.backgroundColor = UIColor().UIColorFromHex(rgbValue: 0x4A4A4A)
-        scene.scaleMode = .aspectFill
+        scene.scaleMode = .aspectFit
+        
         
         level = Level(filename: "Level_\(levelNum)")
         
@@ -211,7 +212,7 @@ class GameViewController: UIViewController, BillPaymentDelegate {
     }
     
     func updateLabels() {
-        remainingMovesLabel.text = String(format: "%ld", movesLeft) + " moves"
+        remainingMovesLabel.text = String(format: "%ld", movesLeft)
         bankAmountLabel.text = formatter.string(from: NSNumber(value: gameScore))
         
     }

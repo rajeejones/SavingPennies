@@ -44,9 +44,13 @@ class GameScene: SKScene {
         
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
+        let background = SKSpriteNode(imageNamed: "BackgroundImage")
+        background.size = size
+        addChild(background)
+        
         let layerPosition = CGPoint(
             x: -TileWidth * CGFloat(NumColumns) / 2,
-            y: -TileHeight * CGFloat(NumRows) / 2)
+            y: (-TileHeight * CGFloat(NumRows) / 2) - 55)
 
         coinsLayer.position = layerPosition
         tilesLayer.position = layerPosition

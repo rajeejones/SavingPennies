@@ -252,6 +252,12 @@ class GameViewController: UIViewController, BillPaymentDelegate {
         shuffle()
         decrementMoves()
     }
+    @IBAction func settingsButtonPressed(_ sender: Any) {
+        
+        let xibView = Bundle.main.loadNibNamed("PausedView", owner: nil, options: nil)?[0] as! PausedView
+        
+        PopupContainer.generatePopupWithView(xibView).show()
+    }
     
     @IBAction func expensesButtonPressed(_ sender: Any) {
         let xibView = Bundle.main.loadNibNamed("PopupView", owner: nil, options: nil)?[0] as! PopupView
@@ -260,6 +266,8 @@ class GameViewController: UIViewController, BillPaymentDelegate {
         PopupContainer.generatePopupWithView(xibView).show()
         
     }
+    
+    
         
     func payBill(forAmount: Int) {
         if (forAmount <= gameScore) {

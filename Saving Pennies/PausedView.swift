@@ -14,8 +14,8 @@ protocol PausedViewDelegate:class {
     func exitButtonPressed()
 }
 
-var playSounds = true
-var playMusic = true
+var muteSounds = false
+var muteMusic = false
 
 class PausedView: UIView {
     
@@ -27,21 +27,34 @@ class PausedView: UIView {
     
     weak var pausedViewDelegate: PausedViewDelegate?
     
+    var playSounds:Bool = true {
+        didSet {
+            let fxImage = playSounds ? #imageLiteral(resourceName: "fxButton_Normal"): #imageLiteral(resourceName: "fxButton_Mute")
+            fxButton.setImage(fxImage, for: UIControlState.normal)
+        }
+    }
+    var playMusic: Bool = true {
+        didSet {
+            let musicImage = playMusic ? #imageLiteral(resourceName: "musicButton_Normal") : #imageLiteral(resourceName: "musicButton_Mute")
+            musicButton.setImage(musicImage, for: UIControlState.normal)
+        }
+    }
     override func awakeFromNib() {
         //super.awakeFromNib()
         
-        let fxImage = playSounds ? #imageLiteral(resourceName: "fxButton_Normal"): #imageLiteral(resourceName: "fxButton_Normal")
-        let musicImage = playMusic ? #imageLiteral(resourceName: "musicButton_Normal") : #imageLiteral(resourceName: "musicButton_Normal")
-        
-        fxButton.setImage(fxImage, for: UIControlState.normal)
-        musicButton.setImage(musicImage, for: UIControlState.normal)
+        playSounds = !muteSounds
+        playMusic = !muteMusic
         
     }
     
     @IBAction func musicButtonPressed(_ sender: UIButton) {
+        playMusic = !playMusic
+        muteMusic = !playMusic
     }
     
     @IBAction func fxButtonPressed(_ sender: UIButton) {
+        playSounds = !playSounds
+        muteSounds = !playSounds
     }
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
@@ -53,11 +66,4 @@ class PausedView: UIView {
     @IBAction func exitButtonPressed(_ sender: UIButton) {
     }
     
-    func toggleMusicButton() {
-        
-    }
-    
-    func toggleFxButton() {
-        
-    }
 }

@@ -105,14 +105,6 @@
                                 <rect key="frame" x="284" y="605" width="76" height="51"/>
                                 <state key="normal" image="bankButton"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxW-0f-CMA">
-                                <rect key="frame" x="12" y="4" width="65" height="36"/>
-                                <color key="backgroundColor" red="0.91764705882352937" green="0.28627450980392155" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="expensesButtonImage"/>
-                                <connections>
-                                    <action selector="expensesButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="LAn-mv-Jev"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movesTextLabel" translatesAutoresizingMaskIntoConstraints="NO" id="0XZ-Y2-hJR">
                                 <rect key="frame" x="162" y="47" width="51" height="18"/>
                                 <constraints>
@@ -123,7 +115,6 @@
                         <color key="backgroundColor" red="0.53725490200000003" green="0.76862745099999996" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vnK-k4-K8F" firstAttribute="centerX" secondItem="plm-JB-Jee" secondAttribute="centerX" id="0EF-5b-TpN"/>
-                            <constraint firstItem="vnK-k4-K8F" firstAttribute="leading" secondItem="wxW-0f-CMA" secondAttribute="trailing" constant="79" id="0HW-pZ-Hej"/>
                             <constraint firstItem="0XZ-Y2-hJR" firstAttribute="top" secondItem="vnK-k4-K8F" secondAttribute="bottom" constant="3" id="1iu-RK-IFQ"/>
                             <constraint firstItem="hbI-Qt-2Lg" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="2dm-36-i3p"/>
                             <constraint firstAttribute="bottom" secondItem="ZOI-5e-SEV" secondAttribute="bottom" constant="189" id="4xd-T9-fFu"/>
@@ -133,7 +124,6 @@
                             <constraint firstItem="vnK-k4-K8F" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="topMargin" constant="4" id="KUx-7i-ykg"/>
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="WY5-po-Mhk" secondAttribute="bottom" constant="8" symbolic="YES" id="RZ8-NC-s1a"/>
                             <constraint firstItem="WY5-po-Mhk" firstAttribute="leading" secondItem="pqf-KO-ALh" secondAttribute="trailing" constant="52" id="S1z-sD-0c7"/>
-                            <constraint firstItem="plm-JB-Jee" firstAttribute="leading" secondItem="wxW-0f-CMA" secondAttribute="leading" id="TB6-cQ-W0x"/>
                             <constraint firstAttribute="bottom" secondItem="plm-JB-Jee" secondAttribute="bottom" constant="463" id="VFH-1C-yRU"/>
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="hbI-Qt-2Lg" secondAttribute="bottom" id="VHH-3h-kVo"/>
                             <constraint firstItem="6HD-7D-FBR" firstAttribute="leading" secondItem="vnK-k4-K8F" secondAttribute="trailing" constant="8" symbolic="YES" id="VJj-eh-fMm"/>
@@ -147,13 +137,12 @@
                             <constraint firstItem="plm-JB-Jee" firstAttribute="top" secondItem="0XZ-Y2-hJR" secondAttribute="bottom" constant="11" id="jaZ-zL-4of"/>
                             <constraint firstItem="6HD-7D-FBR" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" id="t01-wg-dPv"/>
                             <constraint firstItem="gLj-Js-czD" firstAttribute="leading" secondItem="WY5-po-Mhk" secondAttribute="trailing" constant="8" symbolic="YES" id="tAO-BK-3TB"/>
-                            <constraint firstItem="vnK-k4-K8F" firstAttribute="top" secondItem="wxW-0f-CMA" secondAttribute="top" id="tiE-cA-VGW"/>
                             <constraint firstAttribute="trailing" secondItem="hbI-Qt-2Lg" secondAttribute="trailing" id="yEx-la-TzM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bankAmountLabel" destination="6HD-7D-FBR" id="4qe-Fj-97a"/>
-                        <outlet property="expensesButton" destination="wxW-0f-CMA" id="2iG-qP-xKD"/>
+                        <outlet property="expensesTableView" destination="hZ9-28-LkC" id="oPm-Iz-2su"/>
                         <outlet property="gameSkView" destination="hbI-Qt-2Lg" id="g3b-8s-sB5"/>
                         <outlet property="menuButton" destination="pqf-KO-ALh" id="EpQ-5t-i3A"/>
                         <outlet property="overlayImage" destination="ZOI-5e-SEV" id="uh1-rU-TPE"/>
@@ -227,7 +216,6 @@
         <image name="bankButton" width="76" height="51"/>
         <image name="darkBackground" width="335" height="103"/>
         <image name="expensesBackground" width="351" height="136"/>
-        <image name="expensesButtonImage" width="34" height="36"/>
         <image name="movesTextLabel" width="51" height="12"/>
         <image name="settingsButton" width="25" height="26"/>
         <image name="shuffleButton" width="159" height="57"/>

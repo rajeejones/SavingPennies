@@ -10,8 +10,8 @@ import UIKit
 
 protocol PausedViewDelegate:class {
     func musicButtonToggled(button:UIButton)
-    func fxButtonToggled(button:UIButton)
     func exitButtonPressed()
+    func restartButtonPressed()
 }
 
 var muteSounds = false
@@ -56,7 +56,6 @@ class PausedView: UIView {
     @IBAction func fxButtonPressed(_ sender: UIButton) {
         playSounds = !playSounds
         muteSounds = !playSounds
-        pausedViewDelegate?.fxButtonToggled(button: sender)
     }
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
@@ -66,6 +65,18 @@ class PausedView: UIView {
     }
     
     @IBAction func exitButtonPressed(_ sender: UIButton) {
+        if let superView = self.superview as? PopupContainer {
+            (superView ).close()
+            pausedViewDelegate?.exitButtonPressed()
+        }
     }
+    @IBAction func restartButtonPressed(_ sender: Any) {
+        if let superView = self.superview as? PopupContainer {
+            (superView ).close()
+            pausedViewDelegate?.restartButtonPressed()
+        }
+    }
+    
+    
     
 }

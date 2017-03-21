@@ -45,6 +45,8 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var expensesButton: UIButton!
     
+    @IBOutlet weak var expensesTableView: UITableView!
+    
     // Mark: View Overrides
     override var prefersStatusBarHidden: Bool {
         get {
@@ -74,6 +76,7 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
         overlayImage.isHidden = true;
         currentLevelNum = 0
         setupLevel(levelNum: currentLevelNum)
+        
     }
     
     func setupLevel(levelNum: Int) {
@@ -95,6 +98,8 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
         scene.swipeHandler = handleSwipe
         scene.addTiles()
         
+        setupExpenses()
+        
         // Present the scene.
         skView.presentScene(scene)
         
@@ -102,6 +107,12 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
         beginGame()
     }
     
+    func setupExpenses() {
+        expensesTableView.register(UINib(nibName: "ExpenseTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        expensesTableView.delegate = self
+        expensesTableView.dataSource = self
+        expensesTableView.reloadData()
+    }
 
     func beginGame() {
         scene.animateBeginGame() { }
@@ -214,6 +225,7 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
     func updateLabels() {
         remainingMovesLabel.text = String(format: "%ld", movesLeft)
         bankAmountLabel.text = formatter.string(from: NSNumber(value: gameScore))
+        expensesTableView.reloadData()
         
     }
     
@@ -293,13 +305,129 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
             backgroundMusicPlayer.pause()
         }
     }
-    func fxButtonToggled(button:UIButton) {
-        
-    }
+    
     func exitButtonPressed() {
+        self.performSegue(withIdentifier: "unwindToCharacterSelect", sender: self)
+    }
+    
+    func restartButtonPressed() {
+        beginGame()
+    }
+    
+}
+
+extension GameViewController: UITableViewDataSource, UITableViewDelegate, PayButtonDelegate {
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44.0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return level.expenses.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell = UITableViewCell()
+        
+        cell = setupExpensesTableViewCell(tableView, indexPath: indexPath)
+        
+        return cell
+        
         
     }
     
+    func setupExpensesTableViewCell(_ tableView:UITableView,indexPath:IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ExpenseTableViewCell
+        
+        cell.itemLabel.text = level.expenses[indexPath.row].description
+        cell.itemLabel.textColor = UIColor.brown
+        cell.paid = level.expenses[indexPath.row].paid
+        cell.payButtonDelegate = self
+        cell.paymentAmount = level.expenses[indexPath.row].amount
+        
+        if cell.paid {
+            cell.payBtn.alpha = 0
+            cell.paidCheckmarkImage.alpha = 1
+        }
+        else if !cell.canBePaid() {
+            cell.payBtn.alpha = 1
+            cell.paidCheckmarkImage.alpha = 0
+            cell.payBtn.borderColor = UIColor.clear
+            cell.payBtn.setTitle(formatter.string(from: NSNumber(value: level.expenses[indexPath.row].amount)), for: UIControlState.normal)
+            cell.payBtn.tintColor = UIColor.brown
+            cell.payBtn.setTitleColor(UIColor.brown, for: UIControlState.normal)
+            
+        } else {
+            cell.payBtn.alpha = 1
+            cell.paidCheckmarkImage.alpha = 0
+            cell.payBtn.borderColor = UIColor().brandGreen()
+            cell.payBtn.setTitle("Pay!", for: UIControlState.normal)
+            cell.payBtn.tintColor = UIColor().brandGreen()
+            cell.payBtn.setTitleColor(UIColor().brandGreen(), for: UIControlState.normal)
+        }
+        cell.backgroundColor = UIColor.clear
+        return cell
+    }
+    
+    //PayButtonDelegate
+    func payButtonPressed(amount: Int, cell: UITableViewCell) {
+        // check if paid, then set the variable to paid, and change the image
+        
+        guard let expenseCell = cell as? ExpenseTableViewCell else {
+            return
+        }
+        
+        guard let cellIndex = expensesTableView.indexPath(for: expenseCell)?.row else {
+            return
+        }
+        
+        if expenseCell.canBePaid() {
+            expenseCell.paid = true
+            level.expenses[cellIndex].paid = true
+            expenseCell.animateItemPaid()
+            expensesTableView.reloadData()
+        }
+        
+        payBill(forAmount: amount)
+        
+        var advance = false
+        for expense in level.expenses {
+            if expense.paid {
+                advance = true
+            } else {
+                advance = false
+                break
+            }
+        }
+        
+        if advance {
+            //resetExpenses()
+            expensesTableView.reloadData()
+            advanceLevel()
+            
+        }
+        
+    }
+    
+    func resetExpenses() {
+        let numSections = expensesTableView.numberOfSections
+        
+        for section in 0 ..< numSections {
+            let rowCount = expensesTableView.numberOfRows(inSection: section)
+            for row in 0 ..< rowCount {
+                if let cell = expensesTableView.cellForRow(at: IndexPath(row: row, section: section)) as? ExpenseTableViewCell {
+                    cell.reset()
+                }
+                //let cell = expensesTableView.cellForRow(at: IndexPath(row: row, section: section)) as? ExpenseTableViewCell
+            }
+        }
+    }
 }
 
 extension UIColor {

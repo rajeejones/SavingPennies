@@ -68,7 +68,6 @@ class PopupView: UIView  {
             break
         }
     }
-    
 
 }
 

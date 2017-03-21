@@ -31,7 +31,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="74.999999999999986" height="56"/>
                                     <state key="normal" image="musicButton_Normal"/>
                                     <connections>
-                                        <action selector="musicButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="nQE-oR-46B"/>
+                                        <action selector="musicButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="eMP-Tk-TY5"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PU-bz-6pP">

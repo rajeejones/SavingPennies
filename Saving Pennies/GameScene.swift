@@ -110,12 +110,8 @@ class GameScene: SKScene {
     func startIndexOfSprite(n:Int) -> CGFloat {
         
         let valueA = TileWidth
-        print("Value A for int: \(n) is: \(valueA)")
         let valueB = CGFloat(n) * (TileWidth + 10.0)
-        print("Value B for int: \(n) is: \(valueB)")
         let valueC = (TileWidth - 10.0)
-        print("Value C for int: \(n) is: \(valueC)")
-        print("Result Should be: \(valueA + valueB - valueC)\n")
         return valueA + valueB - valueC
         
     }
@@ -227,7 +223,11 @@ class GameScene: SKScene {
         let moveB = SKAction.move(to: spriteA.position, duration: Duration)
         moveB.timingMode = .easeOut
         spriteB.run(moveB)
-        run(swapSound)
+        
+        if (!muteSounds) {
+           run(swapSound)
+        }
+       
     }
     
     func animateInvalidSwap(_ swap: Swap, completion: @escaping () -> ()) {
@@ -247,7 +247,9 @@ class GameScene: SKScene {
         
         spriteA.run(SKAction.sequence([moveA, moveB]), completion: completion)
         spriteB.run(SKAction.sequence([moveB, moveA]))
-        run(invalidSwapSound)
+        if (!muteSounds) {
+          run(invalidSwapSound)
+        }
     }
     
     func animateMatchedCoins(_ chains: Set<Chain>, completion: @escaping () -> ()) {
@@ -267,7 +269,11 @@ class GameScene: SKScene {
                 }
             }
         }
-        run(matchSound)
+        
+        if (!muteSounds) {
+          run(matchSound)
+        }
+        
         run(SKAction.wait(forDuration: 0.3), completion: completion)
     }
     
@@ -287,10 +293,14 @@ class GameScene: SKScene {
                 // 5
                 let moveAction = SKAction.move(to: newPosition, duration: duration)
                 moveAction.timingMode = .easeOut
+                if (!muteSounds) {
                 sprite.run(
                     SKAction.sequence([
                         SKAction.wait(forDuration: delay),
                         SKAction.group([moveAction, fallingCoinSound])]))
+                } else {
+                    sprite.run(SKAction.sequence([SKAction.wait(forDuration: delay), moveAction]))
+                }
             }
         }
         // 6
@@ -322,6 +332,7 @@ class GameScene: SKScene {
                 let moveAction = SKAction.move(to: newPosition, duration: duration)
                 moveAction.timingMode = .easeOut
                 sprite.alpha = 0
+                if (!muteSounds) {
                 sprite.run(
                     SKAction.sequence([
                         SKAction.wait(forDuration: delay),
@@ -330,6 +341,15 @@ class GameScene: SKScene {
                             moveAction,
                             addCoinSound])
                         ]))
+                } else {
+                    sprite.run(
+                        SKAction.sequence([
+                            SKAction.wait(forDuration: delay),
+                            SKAction.group([
+                                SKAction.fadeIn(withDuration: 0.05),
+                                moveAction])
+                            ]))
+                }
             }
         }
         // 7

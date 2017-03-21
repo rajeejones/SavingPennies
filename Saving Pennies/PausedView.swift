@@ -50,11 +50,13 @@ class PausedView: UIView {
     @IBAction func musicButtonPressed(_ sender: UIButton) {
         playMusic = !playMusic
         muteMusic = !playMusic
+        pausedViewDelegate?.musicButtonToggled(button: sender)
     }
     
     @IBAction func fxButtonPressed(_ sender: UIButton) {
         playSounds = !playSounds
         muteSounds = !playSounds
+        pausedViewDelegate?.fxButtonToggled(button: sender)
     }
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {

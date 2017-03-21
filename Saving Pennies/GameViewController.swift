@@ -18,7 +18,7 @@ let formatter = NumberFormatter()
 
 typealias CompletionHandler = ((_ success:Bool) -> Void)?
 
-class GameViewController: UIViewController, BillPaymentDelegate {
+class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDelegate {
     
     // Mark: Variables
     var scene: GameScene!
@@ -255,7 +255,7 @@ class GameViewController: UIViewController, BillPaymentDelegate {
     @IBAction func settingsButtonPressed(_ sender: Any) {
         
         let xibView = Bundle.main.loadNibNamed("PausedView", owner: nil, options: nil)?[0] as! PausedView
-        
+        xibView.pausedViewDelegate = self
         PopupContainer.generatePopupWithView(xibView).show()
     }
     
@@ -282,6 +282,22 @@ class GameViewController: UIViewController, BillPaymentDelegate {
     
     func advanceLevel() {
         goToNextLevel()
+    }
+    
+    func musicButtonToggled(button:UIButton) {
+        if (!muteMusic) {
+            if (!backgroundMusicPlayer.isPlaying) {
+                backgroundMusicPlayer.play()
+            }
+        } else {
+            backgroundMusicPlayer.pause()
+        }
+    }
+    func fxButtonToggled(button:UIButton) {
+        
+    }
+    func exitButtonPressed() {
+        
     }
     
 }

@@ -356,20 +356,22 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate, PayBut
             cell.paidCheckmarkImage.alpha = 1
         }
         else if !cell.canBePaid() {
-            cell.payBtn.alpha = 1
-            cell.paidCheckmarkImage.alpha = 0
+            
             cell.payBtn.borderColor = UIColor.clear
             cell.payBtn.setTitle(formatter.string(from: NSNumber(value: level.expenses[indexPath.row].amount)), for: UIControlState.normal)
             cell.payBtn.tintColor = UIColor.brown
             cell.payBtn.setTitleColor(UIColor.brown, for: UIControlState.normal)
-            
-        } else {
             cell.payBtn.alpha = 1
             cell.paidCheckmarkImage.alpha = 0
+            
+        } else {
+            
             cell.payBtn.borderColor = UIColor().brandGreen()
             cell.payBtn.setTitle("Pay!", for: UIControlState.normal)
             cell.payBtn.tintColor = UIColor().brandGreen()
             cell.payBtn.setTitleColor(UIColor().brandGreen(), for: UIControlState.normal)
+            cell.payBtn.alpha = 1
+            cell.paidCheckmarkImage.alpha = 0
         }
         cell.backgroundColor = UIColor.clear
         return cell

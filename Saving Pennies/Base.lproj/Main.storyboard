@@ -17,6 +17,9 @@
         <array key="Montserrat-Bold.otf">
             <string>Montserrat-Bold</string>
         </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Game View Controller-->
@@ -44,20 +47,54 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="plm-JB-Jee">
                                 <rect key="frame" x="12" y="76" width="351" height="128"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="expensesBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EhP-uR-mRi">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expensesBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EhP-uR-mRi">
                                         <rect key="frame" x="-8" y="-10" width="366" height="138"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Xp5-vJ-WDt">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Xp5-vJ-WDt">
                                         <rect key="frame" x="8" y="17" width="335" height="103"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hZ9-28-LkC">
-                                        <rect key="frame" x="16" y="28" width="320" height="82"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hZ9-28-LkC">
+                                        <rect key="frame" x="16" y="28" width="320" height="92"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="chV-j4-AGc">
+                                        <rect key="frame" x="99" y="-4.5" width="153" height="21.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="expenses paid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Mdi-Wl-aal">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="21.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                                <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Gd9-wB-z5r">
+                                                <rect key="frame" x="125" y="0.0" width="28" height="21.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="28" id="aGn-4V-pRu"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-Black" family="Montserrat" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <size key="shadowOffset" width="1" height="1"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Xp5-vJ-WDt" firstAttribute="trailing" secondItem="plm-JB-Jee" secondAttribute="trailingMargin" id="0Qg-uj-BS3"/>
+                                    <constraint firstItem="Xp5-vJ-WDt" firstAttribute="centerX" secondItem="hZ9-28-LkC" secondAttribute="centerX" id="6oz-JQ-cft"/>
+                                    <constraint firstItem="chV-j4-AGc" firstAttribute="leading" secondItem="plm-JB-Jee" secondAttribute="leading" constant="99" id="GO6-oZ-ZIH"/>
+                                    <constraint firstItem="EhP-uR-mRi" firstAttribute="top" secondItem="plm-JB-Jee" secondAttribute="top" constant="-10" id="KuI-yZ-aaz"/>
+                                    <constraint firstItem="EhP-uR-mRi" firstAttribute="centerX" secondItem="chV-j4-AGc" secondAttribute="centerX" id="P7M-1b-hdy"/>
+                                    <constraint firstItem="hZ9-28-LkC" firstAttribute="top" secondItem="chV-j4-AGc" secondAttribute="bottom" constant="11" id="bYS-9H-pGc"/>
+                                    <constraint firstItem="Xp5-vJ-WDt" firstAttribute="bottom" secondItem="plm-JB-Jee" secondAttribute="bottomMargin" id="enJ-55-sEo"/>
+                                    <constraint firstItem="EhP-uR-mRi" firstAttribute="leading" secondItem="plm-JB-Jee" secondAttribute="leading" constant="-8" id="fWT-MB-8DJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="EhP-uR-mRi" secondAttribute="bottom" id="gOF-T9-B8h"/>
+                                    <constraint firstItem="hZ9-28-LkC" firstAttribute="leading" secondItem="plm-JB-Jee" secondAttribute="leading" constant="16" id="l4x-hN-Ev2"/>
+                                    <constraint firstItem="Xp5-vJ-WDt" firstAttribute="top" secondItem="chV-j4-AGc" secondAttribute="bottom" id="lh7-YA-N53"/>
+                                    <constraint firstItem="chV-j4-AGc" firstAttribute="centerX" secondItem="hZ9-28-LkC" secondAttribute="centerX" id="pRA-Pv-5gj"/>
+                                    <constraint firstItem="Xp5-vJ-WDt" firstAttribute="centerY" secondItem="hZ9-28-LkC" secondAttribute="centerY" constant="-5.5" id="sOO-bn-rPc"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HD-7D-FBR">
                                 <rect key="frame" x="227" y="20" width="136" height="32"/>
@@ -104,6 +141,9 @@
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLj-Js-czD">
                                 <rect key="frame" x="284" y="605" width="76" height="51"/>
                                 <state key="normal" image="bankButton"/>
+                                <connections>
+                                    <action selector="bankButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="HNh-UH-pMZ"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movesTextLabel" translatesAutoresizingMaskIntoConstraints="NO" id="0XZ-Y2-hJR">
                                 <rect key="frame" x="162" y="47" width="51" height="18"/>
@@ -142,6 +182,9 @@
                     </view>
                     <connections>
                         <outlet property="bankAmountLabel" destination="6HD-7D-FBR" id="4qe-Fj-97a"/>
+                        <outlet property="bankButton" destination="gLj-Js-czD" id="YLS-vY-F36"/>
+                        <outlet property="expensesPaidLabel" destination="Mdi-Wl-aal" id="e1B-9O-giK"/>
+                        <outlet property="expensesRemainingLabel" destination="Gd9-wB-z5r" id="9jI-ae-7bn"/>
                         <outlet property="expensesTableView" destination="hZ9-28-LkC" id="oPm-Iz-2su"/>
                         <outlet property="gameSkView" destination="hbI-Qt-2Lg" id="g3b-8s-sB5"/>
                         <outlet property="menuButton" destination="pqf-KO-ALh" id="EpQ-5t-i3A"/>

@@ -24,6 +24,7 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
     var scene: GameScene!
     var logicController:LogicController!
     var movesLeft = 0
+    var paidExpensesCount = 0
     
     // Mark: Constants
 
@@ -43,9 +44,11 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
     
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
-    @IBOutlet weak var expensesButton: UIButton!
+    @IBOutlet weak var bankButton: UIButton!
     
+    @IBOutlet weak var expensesPaidLabel: UILabel!
     @IBOutlet weak var expensesTableView: UITableView!
+    @IBOutlet weak var expensesRemainingLabel: UILabel!
     
     // Mark: View Overrides
     override var prefersStatusBarHidden: Bool {
@@ -92,7 +95,7 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
         
         
         level = Level(filename: "Level_\(levelNum)")
-        
+        paidExpensesCount = 0
         logicController = LogicController(withLevel: level)
         scene.logicController = logicController
         scene.swipeHandler = handleSwipe
@@ -111,6 +114,9 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
         expensesTableView.register(UINib(nibName: "ExpenseTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         expensesTableView.delegate = self
         expensesTableView.dataSource = self
+        expensesTableView.separatorColor = UIColor.clear
+        expensesRemainingLabel.text = "0/\(level.expenses.count)"
+        expensesTableView.setContentOffset(CGPoint.zero, animated: true)
         expensesTableView.reloadData()
     }
 
@@ -271,12 +277,10 @@ class GameViewController: UIViewController, BillPaymentDelegate, PausedViewDeleg
         PopupContainer.generatePopupWithView(xibView).show()
     }
     
-    @IBAction func expensesButtonPressed(_ sender: Any) {
-        let xibView = Bundle.main.loadNibNamed("PopupView", owner: nil, options: nil)?[0] as! PopupView
-        xibView.popupType = PopupViewType.expenses
-        xibView.billPaymentDelegate = self
+    @IBAction func bankButtonPressed(_ sender: Any) {
+        let xibView = Bundle.main.loadNibNamed("PausedView", owner: nil, options: nil)?[0] as! PausedView
+        xibView.pausedViewDelegate = self
         PopupContainer.generatePopupWithView(xibView).show()
-        
     }
     
     
@@ -392,6 +396,7 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate, PayBut
         if expenseCell.canBePaid() {
             expenseCell.paid = true
             level.expenses[cellIndex].paid = true
+            paidExpensesCount += 1
             expenseCell.animateItemPaid()
             expensesTableView.reloadData()
         }
@@ -399,14 +404,17 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate, PayBut
         payBill(forAmount: amount)
         
         var advance = false
+        
         for expense in level.expenses {
             if expense.paid {
                 advance = true
+                
             } else {
                 advance = false
                 break
             }
         }
+        expensesRemainingLabel.text = "\(paidExpensesCount)/\(level.expenses.count)"
         
         if advance {
             //resetExpenses()

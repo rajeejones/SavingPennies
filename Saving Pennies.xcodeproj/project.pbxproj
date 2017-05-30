@@ -41,6 +41,7 @@
 		69CAE9FD1DDEAB7900B10561 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69CAE9F81DDEAB7900B10561 /* Montserrat-Light.otf */; };
 		69CAE9FE1DDEAB7900B10561 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69CAE9F91DDEAB7900B10561 /* Montserrat-Regular.otf */; };
 		EA3F5DB11E77A39900877001 /* PausedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3F5DB01E77A39900877001 /* PausedView.xib */; };
+		EAD4E0031E82D46200EB081E /* BankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD4E0021E82D46200EB081E /* BankView.xib */; };
 		EAD66B841E5905B800A313D5 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B821E5905B800A313D5 /* ExpenseTableViewCell.swift */; };
 		EAD66B851E5905B800A313D5 /* ExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD66B831E5905B800A313D5 /* ExpenseTableViewCell.xib */; };
 		EAD66B8B1E62B24100A313D5 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */; };
@@ -91,6 +92,7 @@
 		82FB79029F22D3594E70BAFE /* Pods-Saving Pennies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saving Pennies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saving Pennies/Pods-Saving Pennies.debug.xcconfig"; sourceTree = "<group>"; };
 		BB84FAAD5065F6B3BE8D2433 /* Pods_Saving_Pennies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Saving_Pennies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3F5DB01E77A39900877001 /* PausedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PausedView.xib; sourceTree = "<group>"; };
+		EAD4E0021E82D46200EB081E /* BankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankView.xib; sourceTree = "<group>"; };
 		EAD66B821E5905B800A313D5 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		EAD66B831E5905B800A313D5 /* ExpenseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseTableViewCell.xib; sourceTree = "<group>"; };
 		EAD66B8A1E62B24100A313D5 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				EA3F5DB01E77A39900877001 /* PausedView.xib */,
 				EAEA74BB1E6695B900AD1AA7 /* PopupView.swift */,
 				EADE01A31E78F7A5006252B3 /* PausedView.swift */,
+				EAD4E0021E82D46200EB081E /* BankView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				69391C371D48711D006E27D6 /* Sprites.atlas in Resources */,
 				69385E781D68B4D0002448B7 /* Level_1.json in Resources */,
 				69385E7A1D68B4D0002448B7 /* Level_3.json in Resources */,
+				EAD4E0031E82D46200EB081E /* BankView.xib in Resources */,
 				69CAE9FD1DDEAB7900B10561 /* Montserrat-Light.otf in Resources */,
 				69CAE9FC1DDEAB7900B10561 /* Montserrat-Hairline.otf in Resources */,
 				69385E921D691415002448B7 /* Whoosh.wav in Resources */,
